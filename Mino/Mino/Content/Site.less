@@ -1,12 +1,27 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    padding-left: 270px;
+    transition: all 0.4s ease 0s;
+}
+
+@media (min-width: 1px) and (max-width: 991px) {
+    body{
+        padding-left: 0 !important;
+        transition: all 0.4s ease 0s !important;
+    }
+
+    .tasks{
+        padding-left:40px !important;
+    }
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -29,4 +44,106 @@ textarea {
         h4, .h4 {
         font-size: 16px;
     }
+}
+
+.navbar-inverse {
+    background-color: #111922;
+    border-color: #080808;
+}
+
+/* Task view */
+
+.tasks{
+    list-style: none;
+    padding-right:40px;
+    padding-left: 0;
+
+    li:first-child{
+
+    }
+
+    li{
+        position: relative;
+        border-bottom: solid 1px #4d3d3b;
+
+        .task-box{
+            height:55px;
+            margin-top: 12px;
+
+            .task-tick{
+                width:40px;
+
+                i.glyphicon-unchecked{
+                    font-size: 2.5em;
+                    color: #4d3d3b;
+                }
+                a:hover .glyphicon-unchecked{
+                    color: #111922;
+                    transition: 0.2s;
+                }
+            }
+
+            .task-name{
+                font-size: 18px;
+                position: absolute;
+                top:0px;
+                left:50px;
+            }
+
+            .task-attributes{
+                position:absolute;
+                top: 30px;
+                left: 50px;
+
+                .attr-section{
+                    display: inline-block;
+                    padding-right: 10px;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+/* Sidebar */
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #111922;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;  
+}
+
+.sidebar-nav {
+  
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li{
+      text-align:center;
+      line-height:50px;
+      a{
+          color: #ed6e13;
+          text-decoration: none;
+          display:block;
+          font-size: 18px;
+      }
+  }
+
+  li:hover{
+      background-color: rgba(237, 110, 19, 0.85);
+      transition: all 0.3s ease 0s;
+
+      a{
+          transition: all 0.1s ease 0s;
+          color: black;
+      }
+  }
 }

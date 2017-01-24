@@ -1,11 +1,24 @@
 ﻿body {
   padding-top: 50px;
   padding-bottom: 20px;
+  padding-left: 270px;
+  transition: all 0.4s ease 0s;
+}
+@media (min-width: 1px) and (max-width: 991px) {
+  body {
+    padding-left: 0 !important;
+    transition: all 0.4s ease 0s !important;
+  }
+  .tasks {
+    padding-left: 40px !important;
+  }
 }
 /* Set padding to keep content from hitting the edges */
 .body-content {
   padding-left: 15px;
   padding-right: 15px;
+  padding: 0;
+  margin: 0;
 }
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -23,4 +36,85 @@ textarea {
 #createModal h4,
 #createModal .h4 {
   font-size: 16px;
+}
+.navbar-inverse {
+  background-color: #111922;
+  border-color: #080808;
+}
+/* Task view */
+.tasks {
+  list-style: none;
+  padding-right: 40px;
+  padding-left: 0;
+}
+.tasks li {
+  position: relative;
+  border-bottom: solid 1px #4d3d3b;
+}
+.tasks li .task-box {
+  height: 55px;
+  margin-top: 12px;
+}
+.tasks li .task-box .task-tick {
+  width: 40px;
+}
+.tasks li .task-box .task-tick i.glyphicon-unchecked {
+  font-size: 2.5em;
+  color: #4d3d3b;
+}
+.tasks li .task-box .task-tick a:hover .glyphicon-unchecked {
+  color: #111922;
+  transition: 0.2s;
+}
+.tasks li .task-box .task-name {
+  font-size: 18px;
+  position: absolute;
+  top: 0px;
+  left: 50px;
+}
+.tasks li .task-box .task-attributes {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+}
+.tasks li .task-box .task-attributes .attr-section {
+  display: inline-block;
+  padding-right: 10px;
+  font-size: 12px;
+}
+/* Sidebar */
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 250px;
+  background: #111922;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+.sidebar-nav {
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar-nav li {
+  text-align: center;
+  line-height: 50px;
+}
+.sidebar-nav li a {
+  color: #ed6e13;
+  text-decoration: none;
+  display: block;
+  font-size: 18px;
+}
+.sidebar-nav li:hover {
+  background-color: rgba(237, 110, 19, 0.85);
+  transition: all 0.3s ease 0s;
+}
+.sidebar-nav li:hover a {
+  transition: all 0.1s ease 0s;
+  color: black;
 }

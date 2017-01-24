@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Mino.Models.Tasks>
+@{
+    ViewBag.Title = "Index";
+}
+
+<ul class="tasks">
+    @foreach (var task in Model)
+    {
+        <li>
+            <div class="task-box">
+                <div class="task-tick">
+                    <a href="#">
+                        <i class="glyphicon glyphicon-unchecked"></i>
+                    </a>
+                </div>
+                <div class="task-name">
+                    @task.Name
+            </div>
+            <div class="task-attributes">
+                <div class="attr-section">
+                    <span class="glyphicon glyphicon-record" style="color: #234;" aria-hidden="true"></span>
+                    <span>Project</span>
+                </div>
+                <div class="attr-section">
+                    <span class="glyphicon glyphicon-flag"></span>
+                    <span>Tag</span>
+                </div>
+            </div>
+        </div>
+    </li>
+    }
+</ul>

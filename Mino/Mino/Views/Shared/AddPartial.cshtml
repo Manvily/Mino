@@ -1,0 +1,23 @@
+﻿@model Mino.Models.Tasks
+
+<div class="modal fade" id="createModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b>Quick Add Task</b></h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control js-task-name", placeholder = "eg. Call to boss" })
+                    @Html.ValidationMessageFor(x => x.Name)
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary btn-sm js-task-add">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
