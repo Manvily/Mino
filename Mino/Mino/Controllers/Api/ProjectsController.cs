@@ -6,25 +6,26 @@ using System.Web.Http;
 namespace Mino.Controllers.Api
 {
     [Authorize]
-    public class TasksController : ApiController
+    public class ProjectsController : ApiController
     {
         private ApplicationDbContext _context;
 
-        public TasksController()
+        public ProjectsController()
         {
             _context = new ApplicationDbContext();
         }
 
         [HttpPost]
-        public IHttpActionResult Create(TaskDto dto)
+        public IHttpActionResult Create(ProjectDto dto)
         {
-            var userTask = new Tasks
+            var project = new Project
             {
                 Name = dto.Name,
+                Color = dto.Color,
                 UserId = User.Identity.GetUserId()
             };
 
-            _context.Tasks.Add(userTask);
+            _context.Projects.Add(project);
             _context.SaveChanges();
 
             return Ok();

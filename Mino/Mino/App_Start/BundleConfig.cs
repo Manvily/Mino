@@ -24,7 +24,8 @@ namespace Mino
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/Site.min.css"));
+                      "~/Content/Site.min.css",
+                      "~/Content/animate.css"));
         }
     }
 }

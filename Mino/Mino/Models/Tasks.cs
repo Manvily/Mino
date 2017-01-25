@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Services.Description;
 
 namespace Mino.Models
 {
@@ -7,7 +8,7 @@ namespace Mino.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You cant add empty task.")]
         [StringLength(255)]
         public string Name { get; set; }
 

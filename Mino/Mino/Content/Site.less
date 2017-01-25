@@ -6,13 +6,13 @@
 }
 
 @media (min-width: 1px) and (max-width: 991px) {
-    body{
+    body {
         padding-left: 0 !important;
         transition: all 0.4s ease 0s !important;
     }
 
-    .tasks{
-        padding-left:40px !important;
+    .tasks {
+        padding-left: 40px !important;
     }
 }
 
@@ -41,7 +41,7 @@ textarea {
 /* Bootstrap overrides */
 
 #createModal {
-        h4, .h4 {
+    h4, .h4 {
         font-size: 16px;
     }
 }
@@ -53,49 +53,49 @@ textarea {
 
 /* Task view */
 
-.tasks{
+.tasks {
     list-style: none;
-    padding-right:40px;
+    padding-right: 40px;
     padding-left: 0;
 
-    li:first-child{
-
+    li:first-child {
     }
 
-    li{
+    li {
         position: relative;
         border-bottom: solid 1px #4d3d3b;
 
-        .task-box{
-            height:55px;
+        .task-box {
+            height: 55px;
             margin-top: 12px;
 
-            .task-tick{
-                width:40px;
+            .task-tick {
+                width: 40px;
 
-                i.glyphicon-unchecked{
+                i.glyphicon-unchecked {
                     font-size: 2.5em;
                     color: #4d3d3b;
                 }
-                a:hover .glyphicon-unchecked{
+
+                a:hover .glyphicon-unchecked {
                     color: #111922;
                     transition: 0.2s;
                 }
             }
 
-            .task-name{
+            .task-name {
                 font-size: 18px;
                 position: absolute;
-                top:0px;
-                left:50px;
+                top: 0px;
+                left: 50px;
             }
 
-            .task-attributes{
-                position:absolute;
+            .task-attributes {
+                position: absolute;
                 top: 30px;
                 left: 50px;
 
-                .attr-section{
+                .attr-section {
                     display: inline-block;
                     padding-right: 10px;
                     font-size: 12px;
@@ -108,42 +108,78 @@ textarea {
 /* Sidebar */
 
 #sidebar-wrapper {
-  margin-left: -250px;
-  left: 250px;
-  width: 250px;
-  background: #111922;
-  position: fixed;
-  height: 100%;
-  overflow-y: auto;
-  z-index: 1000;
-  transition: all 0.4s ease 0s;  
-}
+    margin-left: -250px;
+    left: 250px;
+    width: 250px;
+    background: #111922;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
 
-.sidebar-nav {
-  
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    .sidebar-nav {
+        width: 250px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
 
-  li{
-      text-align:center;
-      line-height:50px;
-      a{
-          color: #ed6e13;
-          text-decoration: none;
-          display:block;
-          font-size: 18px;
-      }
-  }
+        .sidebar-item {
+            text-align: center;
+            line-height: 50px;
+            position: relative;
 
-  li:hover{
-      background-color: rgba(237, 110, 19, 0.85);
-      transition: all 0.3s ease 0s;
+            a {
+                color: #adadad;
+                text-decoration: none;
+                display: block;    
+                
+                .sidebar-item-text{
+                    font-size: 18px;
+                }            
+            }
 
-      a{
-          transition: all 0.1s ease 0s;
-          color: black;
-      }
-  }
+            .sidebar-icon {
+                position: absolute;
+                left: 50px;
+                top: 18px;
+            }
+
+            .glyphicon-chevron-up{
+                position: absolute;
+                right: 65px;
+                top: 18px;
+            }
+        }
+
+        .sidebar-item:hover {
+            transition: all 0.2s ease 0s;
+            background-color: rgba(237, 110, 19, 0.85);
+
+            a {
+                transition: all 0.1s ease 0s;
+                color: black;
+            }
+        }
+    }
+
+    .add-project {
+        text-align: center;
+        padding-top: 10px;
+        a {
+            text-decoration: none;
+            color: #adadad;
+            transition: 0.1s;
+        }
+
+        a:hover {
+            color: #ed6e13;
+            transition: 0.1s;
+        }
+    }
+
+    .projects-form {
+        color: #9b9b9b;
+        padding: 10px;
+    }
 }

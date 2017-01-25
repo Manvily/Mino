@@ -9,99 +9,99 @@
     @Scripts.Render("~/bundles/modernizr")
 
     <script type="text/javascript">
-        var appInsights=window.appInsights||function(config){
-            function s(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},r=document,f=window,e="script",o=r.createElement(e),i,u;for(o.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",r.getElementsByTagName(e)[0].parentNode.appendChild(o),t.cookie=r.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)s("track"+i.pop());return config.disableExceptionTracking||(i="onerror",s("_"+i),u=f[i],f[i]=function(config,r,f,e,o){var s=u&&u(config,r,f,e,o);return s!==!0&&t["_"+i](config,r,f,e,o),s}),t
+        var appInsights = window.appInsights || function (config) {
+            function s(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, r = document, f = window, e = "script", o = r.createElement(e), i, u; for (o.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", r.getElementsByTagName(e)[0].parentNode.appendChild(o), t.cookie = r.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) s("track" + i.pop()); return config.disableExceptionTracking || (i = "onerror", s("_" + i), u = f[i], f[i] = function (config, r, f, e, o) { var s = u && u(config, r, f, e, o); return s !== !0 && t["_" + i](config, r, f, e, o), s }), t
         }({
-            instrumentationKey:"b64ecf1b-4a4a-4be4-861d-e6e0ec05b24f"
+            instrumentationKey: "b64ecf1b-4a4a-4be4-861d-e6e0ec05b24f"
         });
-        
-        window.appInsights=appInsights;
+
+        window.appInsights = appInsights;
         appInsights.trackPageView();
     </script>
 </head>
 <body>
-    
-<div id="sidebar-wrapper" class="hidden-sm hidden-xs">
-    <nav class="sidebar">
-        <ul class="sidebar-nav">
-            <li class="sidebar-item">
-                <a href="#">
-                    <span class="sidebar-item-text">Home</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#">
-                    <span class="sidebar-item-text">Home</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#">
-                    <span class="sidebar-item-text">Home</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a href="#">
-                    <span class="sidebar-item-text">Home</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Application name", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-            @Html.Partial("_LoginPartial")
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Tasks", "Index", "Tasks")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
     </div>
-</div>
 
-@Html.Action("AddPartial", "Tasks")
+    @Html.Action("AddTaskPartial", "Tasks")
 
-<div class="body-content">
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-</div>
+    @Html.Action("SidebarPartial", "Tasks")
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    <div class="body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
     <script>
-    $(document).ready(function() {
-        $('.js-show-task-form').on('click',
-            function() {
-                $('#createModal').modal('show');
-            });
+        $(document).ready(function () {
+            $('.js-show-task-form').on('click',
+                function () {
+                    $('#createModal').modal('show');
+                });
 
-        $('.js-task-add').on('click',
-            function() {
-                var taskName = $('.js-task-name').val();
-                $.post("/api/tasks", { name: taskName })
-                    .done(function() {
-                        //TODO show new task in list
-                    })
-                    .fail(function() {
-                        alert('Something failed!');
-                    });
-                $('#createModal').modal('hide');
-            });
-    });
+            $('.js-task-add').on('click',
+                function () {
+                    var taskName = $('.js-task-name').val();
+                    $.post("/api/tasks/create", { name: taskName })
+                        .done(function () {
+                            location.reload();
+                        })
+                        .fail(function () {
+                            alert('Something failed!');
+                        });
+                    $('#createModal').modal('hide');
+                });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var showProjectForm = $('.js-project-form');
+            showProjectForm.on('click',
+                function () {
+                    $('.add-project').addClass('animated bounceOutRight');
+
+                    $('.projects-form').removeClass('hidden').addClass('animated bounceInLeft');
+                });
+            $('.js-create-project').on('click',
+                function () {
+                    var projectName = $('.js-project-name').val();
+                    var projectColor = $('.js-project-color').val();
+
+                    $.post("/api/projects/create", { name: projectName, color: projectColor })
+                        .done(function () {
+                            location.reload();
+                        })
+                        .fail(function () {
+                            alert("Something failed!");
+                        });
+                });
+        });
     </script>
 </body>
 </html>

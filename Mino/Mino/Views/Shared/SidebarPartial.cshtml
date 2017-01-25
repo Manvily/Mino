@@ -1,0 +1,79 @@
+﻿@model Mino.ViewModels.SidebarViewModel
+
+<div id="sidebar-wrapper" class="hidden-sm hidden-xs animated pulse">
+    <nav class="sidebar">
+        <ul class="sidebar-nav">
+            <li class="sidebar-item">
+                <a href="#">
+                    <span class="sidebar-item-text">Home</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#">
+                    <span class="sidebar-item-text">Home</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#">
+                    <span class="sidebar-item-text">Home</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a href="#">
+                    <span class="sidebar-item-text">Home</span>
+                </a>
+            </li>
+            
+            <li class="sidebar-item">
+                <a href="#sub-projects" data-toggle="collapse" data-parent="#sub-projects" data-remote="true">
+                    <span class="glyphicon glyphicon-briefcase sidebar-icon"></span>
+                    <span class="sidebar-item-text">Projects</span>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </li>
+            <li>
+                <div class="collapse in" id="sub-projects">
+                    <ul class="sidebar-nav">
+                        @foreach (var project in Model.Projects)
+                        {
+                            <li class="sidebar-item">
+                                <a href="@Url.Action("Project", "Tasks", new {projectId = @project.Id})" >
+                                    <span class="glyphicon glyphicon-record sidebar-icon" style="color: @project.Color;" aria-hidden="true"></span>
+                                    <span class="sidebar-item-text">@project.Name</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </li>
+            <li class="sidebar-item">
+                <a href="#sub-tags" data-toggle="collapse" data-parent="#sub-tags" data-remote="true">
+                    <span class="glyphicon glyphicon-globe sidebar-icon"></span>
+                    <span class="sidebar-item-text">Tags</span>
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </li>
+            <li>
+                <div class="collapse in" id="sub-tags">
+                    <ul class="sidebar-nav">
+                        @foreach (var tag in Model.Tags)
+                        {
+                            <li class="sidebar-item">
+                                <a href="">
+                                    <span class="glyphicon glyphicon-record sidebar-icon" aria-hidden="true"></span>
+                                    <span class="sidebar-item-text">@tag.Name</span>
+                                </a>
+                            </li>
+                        }
+                        <li>
+                            //HERE CREATE TAG
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    
+    @Html.Action("AddProjectPartial", "Tasks")
+
+</div>
