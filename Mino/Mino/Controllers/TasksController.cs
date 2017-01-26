@@ -43,6 +43,20 @@ namespace Mino.Controllers
             return View("Index", tasks);
         }
 
+        public ActionResult Tag(int tagId)
+        {
+            var userId = User.Identity.GetUserId();
+            var tasks = _context.Tasks
+                .Where(x => x.UserId == userId &&
+                            !x.IsDone &&
+                            x.TagId == tagId)
+                            .Include(p => p.Project)
+                            .Include(t => t.Tag)
+                            .ToList();
+
+            return View("Index", tasks);
+        }
+
         [ChildActionOnly]
         public ActionResult SidebarPartial()
         {
@@ -63,13 +77,6 @@ namespace Mino.Controllers
         public ActionResult AddTaskPartial()
         {
             var model = new Tasks();
-            return PartialView(model);
-        }
-
-        [ChildActionOnly]
-        public ActionResult AddProjectPartial()
-        {
-            var model = new Project();
             return PartialView(model);
         }
     }

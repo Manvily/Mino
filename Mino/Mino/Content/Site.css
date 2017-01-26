@@ -148,3 +148,21 @@ textarea {
   color: #9b9b9b;
   padding: 10px;
 }
+#sidebar-wrapper .add-tag {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 12px;
+}
+#sidebar-wrapper .add-tag a {
+  text-decoration: none;
+  color: #adadad;
+  transition: 0.1s;
+}
+#sidebar-wrapper .add-tag a:hover {
+  color: #ed6e13;
+  transition: 0.1s;
+}
+#sidebar-wrapper .tag-form {
+  color: #9b9b9b;
+  padding: 0 10px 30px 10px;
+}

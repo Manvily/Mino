@@ -48,25 +48,41 @@
             </li>
             <li class="sidebar-item">
                 <a href="#sub-tags" data-toggle="collapse" data-parent="#sub-tags" data-remote="true">
-                    <span class="glyphicon glyphicon-globe sidebar-icon"></span>
+                    <span class="glyphicon glyphicon-tag sidebar-icon"></span>
                     <span class="sidebar-item-text">Tags</span>
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
             </li>
             <li>
-                <div class="collapse in" id="sub-tags">
+                <div class="collapse" id="sub-tags">
                     <ul class="sidebar-nav">
                         @foreach (var tag in Model.Tags)
                         {
                             <li class="sidebar-item">
-                                <a href="">
-                                    <span class="glyphicon glyphicon-record sidebar-icon" aria-hidden="true"></span>
+                                <a href="@Url.Action("Tag", "Tasks", new {tagId = @tag.Id})">
+                                    <span class="glyphicon glyphicon-tag sidebar-icon" aria-hidden="true"></span>
                                     <span class="sidebar-item-text">@tag.Name</span>
                                 </a>
                             </li>
                         }
                         <li>
-                            //HERE CREATE TAG
+                            <div class="add-tag">
+                                <a href="#" class="js-tag-form">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                    Add Tag
+                                </a>
+                            </div>
+                            
+                            <div class="tag-form hidden">
+                                @using (Html.BeginForm())
+                                {
+                                    <div class="form-group">
+                                        @Html.LabelFor(t => t.Tag.Name)
+                                        @Html.TextBoxFor(t => t.Tag.Name, new { @class = "form-control js-tag-name", placeholder = "eg. Adam" })
+                                    </div>
+                                }
+                                <button class="btn btn-success btn-sm pull-right js-create-tag">Create</button>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -74,6 +90,25 @@
         </ul>
     </nav>
     
-    @Html.Action("AddProjectPartial", "Tasks")
+    <div class="add-project">
+        <a href="#" class="js-project-form">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add project
+        </a>
+    </div>
 
+    <div class="projects-form hidden">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.LabelFor(p => p.Project.Name)
+                @Html.TextBoxFor(p => p.Project.Name, new { @class = "form-control js-project-name", placeholder = "eg. Work" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(p => p.Project.Color)
+                @Html.TextBoxFor(p => p.Project.Color, new { @class = "form-control js-project-color", placeholder = "eg. #333333" })
+            </div>
+        }
+        <button class="btn btn-success btn-sm pull-right js-create-project">Create</button>
+    </div>
 </div>

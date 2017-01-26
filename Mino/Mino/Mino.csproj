@@ -207,11 +207,13 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\ProjectsController.cs" />
+    <Compile Include="Controllers\Api\TagsController.cs" />
     <Compile Include="Controllers\Api\TasksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Dtos\ProjectDto.cs" />
+    <Compile Include="Dtos\TagDto.cs" />
     <Compile Include="Dtos\TaskDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -326,7 +328,6 @@
     <Content Include="Views\Shared\AddTaskPartial.cshtml" />
     <Content Include="Views\Shared\_UnloginLayout.cshtml" />
     <Content Include="Views\Shared\SidebarPartial.cshtml" />
-    <Content Include="Views\Shared\AddProjectPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
