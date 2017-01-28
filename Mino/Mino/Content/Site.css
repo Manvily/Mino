@@ -54,6 +54,7 @@ textarea {
 .tasks li .task-box {
   height: 55px;
   margin-top: 12px;
+  cursor: pointer;
 }
 .tasks li .task-box .task-tick {
   width: 40px;
@@ -90,9 +91,9 @@ textarea {
   background: #111922;
   position: fixed;
   height: 100%;
-  overflow-y: auto;
   z-index: 1000;
   transition: all 0.4s ease 0s;
+  color: #adadad;
 }
 #sidebar-wrapper .sidebar-nav {
   width: 250px;
@@ -137,7 +138,6 @@ textarea {
 }
 #sidebar-wrapper .add-project a {
   text-decoration: none;
-  color: #adadad;
   transition: 0.1s;
 }
 #sidebar-wrapper .add-project a:hover {
@@ -145,7 +145,6 @@ textarea {
   transition: 0.1s;
 }
 #sidebar-wrapper .projects-form {
-  color: #9b9b9b;
   padding: 10px;
 }
 #sidebar-wrapper .add-tag {
@@ -155,7 +154,6 @@ textarea {
 }
 #sidebar-wrapper .add-tag a {
   text-decoration: none;
-  color: #adadad;
   transition: 0.1s;
 }
 #sidebar-wrapper .add-tag a:hover {
@@ -163,6 +161,11 @@ textarea {
   transition: 0.1s;
 }
 #sidebar-wrapper .tag-form {
-  color: #9b9b9b;
   padding: 0 10px 30px 10px;
+}
+#sidebar-wrapper .edit-task-content {
+  padding-right: 10px;
+}
+#sidebar-wrapper .edit-task-content li {
+  padding: 10px;
 }

@@ -26,5 +26,13 @@ namespace Mino.Models
         public Tag Tag { get; set; }
 
         public Project Project { get; set; }
+
+        public void Modify(string name, int projectId, int tagId, DateTime? dateTime = null)
+        {
+            Name = name;
+            ProjectId = projectId;
+            TagId = tagId;
+            DateTime = dateTime;
+        }
     }
 }

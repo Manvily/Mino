@@ -67,7 +67,11 @@
             $('.js-task-add').on('click',
                 function () {
                     var taskName = $('.js-task-name').val();
-                    $.post("/api/tasks/create", { name: taskName })
+                    $.ajax({
+                        url: '/api/tasks/',
+                        method: 'PUT',
+                        data: 'name=' + taskName
+                    })
                         .done(function () {
                             location.reload();
                         })
@@ -84,9 +88,9 @@
             var showProjectForm = $('.js-project-form');
             showProjectForm.on('click',
                 function () {
-                    $('.add-project').addClass('animated bounceOutRight');
+                    $('.js-add-project').addClass('animated bounceOutRight');
 
-                    $('.projects-form').removeClass('hidden').addClass('animated bounceInLeft');
+                    $('.js-projects-form').removeClass('hidden').addClass('animated bounceInLeft');
                 });
 
             $('.js-create-project').on('click',
@@ -106,11 +110,11 @@
     </script>
     <script>
         $(document).ready(function () {
-            var showTagForm = $('.js-tag-form').on('click',
+            var showTagForm = $('.js-show-tag-form').on('click',
                 function () {
-                    $('.add-tag').addClass('animated bounceOutRight');
+                    $('.js-add-tag').addClass('animated bounceOutRight');
 
-                    $('.tag-form').removeClass('hidden').addClass('animated bounceInLeft');
+                    $('.js-tag-form').removeClass('hidden').addClass('animated bounceInLeft');
 
                     $('.js-create-tag').on('click',
                         function () {

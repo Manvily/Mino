@@ -6,7 +6,7 @@
     @foreach (var task in Model)
     {
         <li>
-            <div class="task-box">
+            <div class="task-box js-task-box" data-task-id="@task.Id">
                 <div class="task-tick">
                     <a href="#">
                         <i class="glyphicon glyphicon-unchecked"></i>
@@ -29,4 +29,49 @@
         </li>
     }
 </ul>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var taskId = $('#Task_Id');
+            $('.js-task-box').on('click',
+                function () {
+                    $('.js-sidebar-content').toggleClass('animated zoomOutLeft').toggleClass('animated zoomInLeft');
+                    var editTaskContent = $('.js-edit-task-content');
+                    if (editTaskContent.hasClass('hidden')) {
+                        editTaskContent.toggleClass('animated zoomInLeft')
+                            .toggleClass('animated zoomOutRight').toggleClass('hidden');
+
+                        taskId.val($(this).attr('data-task-id'));
+                    } else {
+                        editTaskContent.toggleClass('animated zoomInLeft')
+                            .toggleClass('animated zoomOutRight');
+                        setTimeout(function () {
+                            editTaskContent.toggleClass('hidden');
+                        }, 500);
+                    }
+                });
+
+            $('.js-edit-task').on('click',
+                function () {
+                    $.post("/api/tasks/update",
+                        {
+                            name: $('.js-edit-task-name').val(),
+                            taskId: taskId.val(),
+                            projectId: $('.js-edit-dropdown-projects').val(),
+                            tagId: $('.js-edit-dropdown-tags').val(),
+                            date: $('.js-edit-date').val(),
+                            time: $('.js-edit-time').val()
+                        })
+                        .done(function () {
+                            location.reload();
+                        })
+                        .fail(function () {
+                            alert('Something failed!');
+                        });
+                });
+        });
+    </script>
+}
 
