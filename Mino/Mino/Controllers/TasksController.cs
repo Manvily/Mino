@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Mino.Models;
 using Mino.ViewModels;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -20,13 +21,36 @@ namespace Mino.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            var tasks = _context.Tasks
-                .Where(x => x.UserId == userId && !x.IsDone && x.ProjectId == null)
-                .Include(p => p.Project)
-                .Include(t => t.Tag)
-                .ToList();
+            var tasks =
+                _context.Tasks.Where(x =>
+                    x.UserId == userId &&
+                    !x.IsDone &&
+                    x.ProjectId == null)
+                    .Include(p => p.Project)
+                    .Include(t => t.Tag)
+                    .ToList();
 
             return View(tasks);
+        }
+
+        public ActionResult Today()
+        {
+            var userId = User.Identity.GetUserId();
+            var today = DateTime.Today;
+            var tomorrow = today.AddDays(1);
+
+            var tasks =
+                _context.Tasks.Where(x =>
+                        x.UserId == userId &&
+                        !x.IsDone &&
+                        x.DateTime.HasValue &&
+                        x.DateTime > today &&
+                        x.DateTime < tomorrow)
+                        .Include(p => p.Project)
+                        .Include(t => t.Tag)
+                        .ToList();
+
+            return View("index", tasks);
         }
 
         public ActionResult Project(int projectId)
