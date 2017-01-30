@@ -6,7 +6,13 @@
     @foreach (var task in Model)
     {
         <li>
-            <div class="task-box js-task-box" data-task-id="@task.Id">
+            <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId"
+                 @if (task.DateTime != null)
+                 {
+                     @:data-date = "@task.DateTime.Value.ToString("d MMM yyyy")"
+                     @:data-time = "@task.DateTime.Value.ToString("HH:mm")"
+                 }
+            >
                 <div class="task-tick">
                     <a href="#">
                         <i class="glyphicon glyphicon-unchecked"></i>
@@ -18,11 +24,23 @@
                 <div class="task-attributes">
                     <div class="attr-section">
                         <span class="glyphicon glyphicon-record" style="color: #234;" aria-hidden="true"></span>
-                        <span>Project</span>
+                        <span>
+                            @if (task.ProjectId != null)
+                            {
+                                @task.Project.Name
+                            }
+                            else
+                            {
+                                @:Inbox
+                            }
+                        </span>
                     </div>
                     <div class="attr-section">
-                        <span class="glyphicon glyphicon-flag"></span>
-                        <span>Tag</span>
+                        @if (task.TagId != null)
+                        {
+                            <span class="glyphicon glyphicon-flag"></span>
+                            <span>@task.Tag.Name</span>
+                        }
                     </div>
                 </div>
             </div>
@@ -43,6 +61,11 @@
                         editTaskContent.toggleClass('animated zoomInLeft')
                             .toggleClass('animated zoomOutRight').toggleClass('hidden');
 
+                        $('.js-edit-task-name').val($(this).find('.task-name').text().trim());
+                        $('.js-edit-dropdown-projects').val($(this).attr('data-project-id'));
+                        $('.js-edit-dropdown-tags').val($(this).attr('data-tag-id'));
+                        $('.js-edit-date').val($(this).attr('data-date'));
+                        $('.js-edit-time').val($(this).attr('data-time'));
                         taskId.val($(this).attr('data-task-id'));
                     } else {
                         editTaskContent.toggleClass('animated zoomInLeft')
