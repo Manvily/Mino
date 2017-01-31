@@ -10,6 +10,7 @@ namespace Mino.Dtos
         public string Name { get; set; }
         public string Date { get; set; }
         public string Time { get; set; }
+        public int Priority { get; set; }
 
         public DateTime? GetDateTime()
         {

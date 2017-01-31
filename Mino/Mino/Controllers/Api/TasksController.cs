@@ -39,7 +39,7 @@ namespace Mino.Controllers.Api
             g.Id == dto.TaskId &&
             g.UserId == userId);
 
-            task.Modify(dto.Name, dto.ProjectId, dto.TagId, dto.GetDateTime());
+            task.Modify(dto.Name, dto.Priority, dto.ProjectId, dto.TagId, dto.GetDateTime());
 
             _context.SaveChanges();
 

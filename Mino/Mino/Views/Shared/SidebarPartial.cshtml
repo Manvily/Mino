@@ -1,4 +1,5 @@
-﻿@model Mino.ViewModels.SidebarViewModel
+﻿@using Mino.Models
+@model Mino.ViewModels.SidebarViewModel
 
 <div id="sidebar-wrapper" class="hidden-sm hidden-xs">
     <div class="edit-task-content js-edit-task-content hidden animated zoomOutRight">
@@ -32,10 +33,16 @@
                     @Html.LabelFor(x => x.Time)
                     @Html.TextBoxFor(x => x.Time, new { @class = "form-control js-edit-time", placeholder = "eg 20:00" })
                 </li>
+                <li>
+                    @Html.LabelFor(x => x.Task.Priority)
+                    @Html.DropDownList("Priorities",
+                       EnumHelper.GetSelectList(typeof(Tasks.Priorities)),
+                       "",
+                       new { @class = "form-control js-edit-dropdown-priority" })
+                </li>
             }
         </ul>
         <button class="btn btn-primary btn-sm pull-right js-edit-task">Modify</button>
-
     </div>
 
     <div class="js-sidebar-content animated zoomInLeft">

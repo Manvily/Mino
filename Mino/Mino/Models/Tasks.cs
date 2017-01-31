@@ -28,12 +28,21 @@ namespace Mino.Models
 
         public int Priority { get; set; }
 
-        public void Modify(string name, int? projectId = null, int? tagId = null, DateTime? dateTime = null)
+        public enum Priorities
+        {
+            None = 0,
+            Low = 1,
+            Mid = 2,
+            High = 3
+        }
+
+        public void Modify(string name, int priority, int? projectId = null, int? tagId = null, DateTime? dateTime = null)
         {
             Name = name;
             ProjectId = projectId;
             TagId = tagId;
             DateTime = dateTime;
+            Priority = priority;
         }
     }
 }
