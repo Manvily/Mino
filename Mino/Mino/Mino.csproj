@@ -238,6 +238,10 @@
     <Compile Include="Migrations\201701231021069_ChangeTasksTableName.Designer.cs">
       <DependentUpon>201701231021069_ChangeTasksTableName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701310353174_AddPriorioritiesInTask.cs" />
+    <Compile Include="Migrations\201701310353174_AddPriorioritiesInTask.Designer.cs">
+      <DependentUpon>201701310353174_AddPriorioritiesInTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -355,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701231021069_ChangeTasksTableName.resx">
       <DependentUpon>201701231021069_ChangeTasksTableName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701310353174_AddPriorioritiesInTask.resx">
+      <DependentUpon>201701310353174_AddPriorioritiesInTask.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
