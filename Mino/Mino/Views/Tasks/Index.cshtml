@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Mino.Models.Tasks>
+﻿@using Mino.Models
+@model IEnumerable<Mino.Models.Tasks>
 @{
     ViewBag.Title = "Index";
 }
@@ -7,12 +8,9 @@
     {
         <li>
             <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
-                 @if (task.DateTime != null)
-                 {
-                     @:data-date = "@task.DateTime.Value.ToString("d MMM yyyy")"
-                     @:data-time = "@task.DateTime.Value.ToString("HH:mm")"
-                 }
-            >
+                 @if (task.DateTime != null) { @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
+                                                                        @: data-time="@task.DateTime.Value.ToString("HH:mm")"
+                                                                    }>
                 <div class="task-tick">
                     <a href="#">
                         <i class="glyphicon glyphicon-unchecked"></i>
@@ -42,11 +40,27 @@
                             <span>@task.Tag.Name</span>
                         }
                     </div>
+                    <div class="attr-section">
+                        <span class="glyphicon glyphicon-pushpin"></span>
+                        <span>
+                            @{
+                                var priority = (Tasks.Priorities)task.Priority;
+                                var priorityName = priority.ToString();
+                            }
+                            @priorityName
+                        </span>
+                    </div>
                 </div>
             </div>
         </li>
-    }
+                                }
 </ul>
+
+
+
+
+
+
 
 @section scripts
 {
