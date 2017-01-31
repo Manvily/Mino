@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Services.Description;
 
 namespace Mino.Models
 {
@@ -27,7 +26,7 @@ namespace Mino.Models
 
         public Project Project { get; set; }
 
-        public void Modify(string name, int projectId, int tagId, DateTime? dateTime = null)
+        public void Modify(string name, int? projectId = null, int? tagId = null, DateTime? dateTime = null)
         {
             Name = name;
             ProjectId = projectId;
