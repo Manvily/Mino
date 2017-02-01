@@ -47,7 +47,7 @@ textarea {
 }
 
 .navbar-inverse {
-    background-color: #111922;
+    background-color: #0f1626;
     border-color: #080808;
 }
 
@@ -56,50 +56,57 @@ textarea {
 .tasks {
     list-style: none;
     padding-right: 40px;
-    padding-left: 0;
+    padding-left: 25px;
 
     li:first-child {
+        margin-top: 40px;
+    }
+
+    li:nth-child(even) {
+        background-color: #f3f3f3;
+    }
+
+    li:hover{
+        background-color: #ebebeb;
     }
 
     li {
-        position: relative;
-        border-bottom: solid 1px #4d3d3b;
+        border: solid 0.5px lightgrey;
+        border-radius: 25px;
+        margin-bottom: 10px;
 
         .task-box {
+            position: relative;
             height: 55px;
-            margin-top: 12px;
-            cursor:pointer;
+            cursor: pointer;
 
             .task-tick {
-                width: 40px;
+                position: absolute;
+                top: 9px;
+                left: 10px;
 
                 i.glyphicon-unchecked {
                     font-size: 2.5em;
-                    color: #4d3d3b;
-                }
-
-                a:hover .glyphicon-unchecked {
-                    color: #111922;
-                    transition: 0.2s;
+                    color: #a1a1a1;
                 }
             }
 
             .task-name {
                 font-size: 18px;
                 position: absolute;
-                top: 0px;
+                top: 6px;
                 left: 50px;
             }
 
+
             .task-attributes {
                 position: absolute;
-                top: 30px;
                 left: 50px;
+                bottom: 0;
 
                 .attr-section {
                     display: inline-block;
-                    padding-right: 10px;
-                    font-size: 12px;
+                    padding-right: 1px;
                 }
             }
         }
@@ -112,7 +119,7 @@ textarea {
     margin-left: -250px;
     left: 250px;
     width: 250px;
-    background: #111922;
+    background-color: #132231;
     position: fixed;
     height: 100%;
     z-index: 1000;
@@ -133,11 +140,11 @@ textarea {
             a {
                 color: #adadad;
                 text-decoration: none;
-                display: block;    
-                
-                .sidebar-item-text{
-                    font-size: 18px;
-                }            
+                display: block;
+            }
+
+            .sidebar-item-text {
+                font-size: 18px;
             }
 
             .sidebar-icon {
@@ -146,7 +153,7 @@ textarea {
                 top: 18px;
             }
 
-            .glyphicon-chevron-up{
+            .glyphicon-chevron-up {
                 position: absolute;
                 right: 65px;
                 top: 18px;
@@ -155,35 +162,37 @@ textarea {
 
         .sidebar-item:hover {
             transition: all 0.2s ease 0s;
-            background-color: rgba(237, 110, 19, 0.85);
+            background-color: rgba(118, 50, 63, 0.96);
 
             a {
                 transition: all 0.1s ease 0s;
-                color: black;
+                color: white;
             }
         }
     }
 
     .menu-in-list {
 
-       a{
-           padding-left: 50px;
+        a {
+            padding-left: 50px;
 
-           .glyphicon{
-               position: absolute;
-               top: 18px;
-               left: 88px;
-           }
-           .sidebar-menu-in-item-text{
-               font-size: 15px;
-           }
-       }
+            .glyphicon {
+                position: absolute;
+                top: 18px;
+                left: 88px;
+            }
+
+            .sidebar-menu-in-item-text {
+                font-size: 15px;
+            }
+        }
     }
 
 
     .add-project {
         text-align: center;
         padding-top: 10px;
+
         a {
             text-decoration: none;
             transition: 0.1s;
@@ -199,7 +208,7 @@ textarea {
         padding: 10px;
     }
 
-    .add-tag{
+    .add-tag {
         text-align: center;
         padding-top: 10px;
         font-size: 12px;
@@ -209,7 +218,7 @@ textarea {
             transition: 0.1s;
             padding-left: 0;
 
-            .glyphicon{
+            .glyphicon {
                 position: static;
             }
         }
@@ -224,15 +233,17 @@ textarea {
         padding: 0 10px 30px 10px;
     }
 
-    .edit-task-content{
+    .edit-task-content {
         padding-right: 10px;
 
-        li{
+        li {
             padding: 10px;
         }
 
-        .btn{
+        .btn {
             margin-left: 10px;
         }
     }
 }
+
+

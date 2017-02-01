@@ -8,9 +8,11 @@
     {
         <li>
             <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
-                 @if (task.DateTime != null) { @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
-                                                                                                                           @: data-time="@task.DateTime.Value.ToString("HH:mm")"
-                                                                                                                       }>
+                 @if (task.DateTime != null)
+                 {
+                     @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
+                     @: data-time="@task.DateTime.Value.ToString("HH:mm")"
+                 }>
                 <div class="task-tick">
                     <a href="#">
                         <i class="glyphicon glyphicon-unchecked"></i>
@@ -19,6 +21,7 @@
                 <div class="task-name">
                     @task.Name
                 </div>
+               
                 <div class="task-attributes">
                     <div class="attr-section">
                         <span class="glyphicon glyphicon-record" style="color: #234;" aria-hidden="true"></span>
@@ -34,13 +37,6 @@
                         </span>
                     </div>
                     <div class="attr-section">
-                        @if (task.TagId != null)
-                        {
-                            <span class="glyphicon glyphicon-flag"></span>
-                            <span>@task.Tag.Name</span>
-                        }
-                    </div>
-                    <div class="attr-section">
                         <span class="glyphicon glyphicon-pushpin"></span>
                         <span>
                             @{
@@ -50,10 +46,17 @@
                             @priorityName
                         </span>
                     </div>
+                    <div class="attr-section">
+                        @if (task.TagId != null)
+                        {
+                            <span class="glyphicon glyphicon-flag"></span>
+                            <span>@task.Tag.Name</span>
+                        }
+                    </div>
                 </div>
             </div>
         </li>
-                                }
+     }
 </ul>
 
 
@@ -68,15 +71,14 @@
         $(document).ready(function () {
             var taskId = $('#Task_Id');
             $('.js-task-box').on('click',
-                function () {//start
+                function () {
                     var inAnimateClass = 'animated bounceIn';
 
-                    $('.js-sidebar-content').toggleClass('hidden');
+                    $('.js-sidebar-content').toggleClass('hidden').toggleClass(inAnimateClass);
                     var editTaskContent = $('.js-edit-task-content');
                     if (editTaskContent.hasClass('hidden')) {
                         editTaskContent.toggleClass(inAnimateClass)
                             .toggleClass('hidden');
-
                         $('.js-edit-task-name').val($(this).find('.task-name').text().trim());
                         $('.js-edit-dropdown-projects').val($(this).attr('data-project-id'));
                         $('.js-edit-dropdown-tags').val($(this).attr('data-tag-id'));
@@ -116,7 +118,7 @@
                         url: '/api/tasks/delete',
                         method: 'DELETE',
                         data: 'taskId=' + taskId.val()
-                        
+
 
                     })
                     .done(function () {

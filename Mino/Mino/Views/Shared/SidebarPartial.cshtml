@@ -46,26 +46,18 @@
         <button class="btn btn-danger btn-sm pull-left js-delete-task">Delete</button>
     </div>
 
-    <div class="js-sidebar-content">
+    <div class="js-sidebar-content animated bounceIn">
         <nav>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    @Html.ActionLink("Default inbox", "index", "Tasks")
+                    @Html.ActionLink("Today", "Today", "Tasks", null, new { @class = "sidebar-item-text" })
                 </li>
                 <li class="sidebar-item">
-                    @Html.ActionLink("Today", "Today", "Tasks")
+                    @Html.ActionLink("Next 7 days", "", "", null, new { @class = "sidebar-item-text" })
                 </li>
                 <li class="sidebar-item">
-                    <a href="#">
-                        <span class="sidebar-item-text">Home</span>
-                    </a>
+                     @Html.ActionLink("Default inbox", "Index", "Tasks", null, new { @class = "sidebar-item-text" })
                 </li>
-                <li class="sidebar-item">
-                    <a href="#">
-                        <span class="sidebar-item-text">Home</span>
-                    </a>
-                </li>
-
                 <li class="sidebar-item">
                     <a href="#sub-projects" data-toggle="collapse" data-parent="#sub-projects" data-remote="true">
                         <span class="glyphicon glyphicon-briefcase sidebar-icon"></span>
