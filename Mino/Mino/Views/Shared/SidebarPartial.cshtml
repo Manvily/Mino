@@ -74,14 +74,14 @@
                     </a>
                 </li>
                 <li>
-                    <div class="collapse in" id="sub-projects">
+                    <div class="collapse in menu-in-list" id="sub-projects">
                         <ul class="sidebar-nav">
                             @foreach (var project in Model.Projects)
                             {
                                 <li class="sidebar-item">
                                     <a href="@Url.Action("Project", "Tasks", new {projectId = @project.Id})">
-                                        <span class="glyphicon glyphicon-record sidebar-icon" style="color: @project.Color;" aria-hidden="true"></span>
-                                        <span class="sidebar-item-text">@project.Name</span>
+                                        <span class="glyphicon glyphicon-record" style="color: @project.Color;" aria-hidden="true"></span>
+                                        <span class="sidebar-menu-in-item-text">@project.Name</span>
                                     </a>
                                 </li>
                             }
@@ -96,14 +96,14 @@
                     </a>
                 </li>
                 <li>
-                    <div class="collapse" id="sub-tags">
+                    <div class="collapse menu-in-list" id="sub-tags">
                         <ul class="sidebar-nav">
                             @foreach (var tag in Model.Tags)
                             {
                                 <li class="sidebar-item">
                                     <a href="@Url.Action("Tag", "Tasks", new {tagId = @tag.Id})">
-                                        <span class="glyphicon glyphicon-tag sidebar-icon" aria-hidden="true"></span>
-                                        <span class="sidebar-item-text">@tag.Name</span>
+                                        <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                        <span class="sidebar-menu-in-item-text">@tag.Name</span>
                                     </a>
                                 </li>
                             }

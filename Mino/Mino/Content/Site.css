@@ -132,6 +132,17 @@ textarea {
   transition: all 0.1s ease 0s;
   color: black;
 }
+#sidebar-wrapper .menu-in-list a {
+  padding-left: 50px;
+}
+#sidebar-wrapper .menu-in-list a .glyphicon {
+  position: absolute;
+  top: 18px;
+  left: 88px;
+}
+#sidebar-wrapper .menu-in-list a .sidebar-menu-in-item-text {
+  font-size: 15px;
+}
 #sidebar-wrapper .add-project {
   text-align: center;
   padding-top: 10px;
@@ -155,6 +166,10 @@ textarea {
 #sidebar-wrapper .add-tag a {
   text-decoration: none;
   transition: 0.1s;
+  padding-left: 0;
+}
+#sidebar-wrapper .add-tag a .glyphicon {
+  position: static;
 }
 #sidebar-wrapper .add-tag a:hover {
   color: #ed6e13;
