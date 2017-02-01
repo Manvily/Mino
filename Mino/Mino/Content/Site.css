@@ -169,3 +169,6 @@ textarea {
 #sidebar-wrapper .edit-task-content li {
   padding: 10px;
 }
+#sidebar-wrapper .edit-task-content .btn {
+  margin-left: 10px;
+}
