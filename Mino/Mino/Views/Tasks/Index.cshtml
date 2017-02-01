@@ -68,12 +68,15 @@
         $(document).ready(function () {
             var taskId = $('#Task_Id');
             $('.js-task-box').on('click',
-                function () {
-                    $('.js-sidebar-content').toggleClass('animated zoomOutLeft').toggleClass('animated zoomInLeft');
+                function () {//start
+                    var inAnimateClass = 'animated bounceIn';
+                    var outAnimateClass = 'animated bounceOut';
+
+                    $('.js-sidebar-content').toggleClass('hidden');
                     var editTaskContent = $('.js-edit-task-content');
                     if (editTaskContent.hasClass('hidden')) {
-                        editTaskContent.toggleClass('animated zoomInLeft')
-                            .toggleClass('animated zoomOutRight').toggleClass('hidden');
+                        editTaskContent.toggleClass(inAnimateClass)
+                            .toggleClass('hidden');
 
                         $('.js-edit-task-name').val($(this).find('.task-name').text().trim());
                         $('.js-edit-dropdown-projects').val($(this).attr('data-project-id'));
@@ -83,11 +86,8 @@
                         $('.js-edit-time').val($(this).attr('data-time'));
                         taskId.val($(this).attr('data-task-id'));
                     } else {
-                        editTaskContent.toggleClass('animated zoomInLeft')
-                            .toggleClass('animated zoomOutRight');
-                        setTimeout(function () {
-                            editTaskContent.toggleClass('hidden');
-                        }, 500);
+                        editTaskContent.toggleClass(inAnimateClass);
+                        editTaskContent.toggleClass('hidden');
                     }
                 });
 

@@ -2,7 +2,7 @@
 @model Mino.ViewModels.SidebarViewModel
 
 <div id="sidebar-wrapper" class="hidden-sm hidden-xs">
-    <div class="edit-task-content js-edit-task-content hidden animated zoomOutRight">
+    <div class="edit-task-content js-edit-task-content hidden">
         <ul class="sidebar-nav">
             @using (Html.BeginForm())
             {
@@ -46,7 +46,7 @@
         <button class="btn btn-danger btn-sm pull-left js-delete-task">Delete</button>
     </div>
 
-    <div class="js-sidebar-content animated zoomInLeft">
+    <div class="js-sidebar-content">
         <nav>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
