@@ -45,5 +45,19 @@ namespace Mino.Controllers.Api
 
             return Ok();
         }
+
+        [HttpDelete]
+        public IHttpActionResult Delete(TaskDto dto)
+        {
+            var userId = User.Identity.GetUserId();
+            var task = _context.Tasks.Single(a =>
+            a.UserId == userId &&
+            a.Id == dto.TaskId);
+
+            _context.Tasks.Remove(task);
+            _context.SaveChanges();
+
+            return Ok();
+        }
     }
 }
