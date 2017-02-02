@@ -51,79 +51,13 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
     <script>
         $(document).ready(function () {
-            $('.js-show-task-form').on('click',
-                function () {
-                    $('#createModal').modal('show');
-                });
-
-            $('.js-task-add').on('click',
-                function () {
-                    var taskName = $('.js-task-name').val();
-                    $.ajax({
-                        url: '/api/tasks/',
-                        method: 'PUT',
-                        data: 'name=' + taskName
-                    })
-                        .done(function () {
-                            location.reload();
-                        })
-                        .fail(function () {
-                            alert('Something failed!');
-                        });
-                    $('#createModal').modal('hide');
-                });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            var showProjectForm = $('.js-project-form');
-            showProjectForm.on('click',
-                function () {
-                    $('.js-add-project').addClass('animated bounceOutRight');
-
-                    $('.js-projects-form').removeClass('hidden').addClass('animated bounceInLeft');
-                });
-
-            $('.js-create-project').on('click',
-                function () {
-                    var projectName = $('.js-project-name').val();
-                    var projectColor = $('.js-project-color').val();
-
-                    $.post("/api/projects/create", { name: projectName, color: projectColor })
-                   .done(function () {
-                       location.reload();
-                   })
-                   .fail(function () {
-                       alert("Something failed!");
-                   });
-                });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            var showTagForm = $('.js-show-tag-form').on('click',
-                function () {
-                    $('.js-add-tag').addClass('animated bounceOutRight');
-
-                    $('.js-tag-form').removeClass('hidden').addClass('animated bounceInLeft');
-
-                    $('.js-create-tag').on('click',
-                        function () {
-                            var tagName = $('.js-tag-name').val();
-
-                            $.post('/api/tags/create', { name: tagName })
-                                .done(function () {
-                                    location.reload();
-                                })
-                                .fail(function () {
-                                    alert("Something failed!");
-                                });
-                        });
-                });
+            AddTaskController.init();
+            ProjectsController.init();
+            TagsController.init();
         });
     </script>
 </body>

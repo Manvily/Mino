@@ -7,6 +7,17 @@ namespace Mino
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/app").Include(
+                    "~/Scripts/app/app.js",
+                    "~/Scripts/app/addTaskService.js",
+                    "~/Scripts/app/projectsService.js",
+                    "~/Scripts/app/tagsService.js",
+                    "~/Scripts/app/editTaskService.js",
+                    "~/Scripts/app/editTaskController.js",
+                    "~/Scripts/app/projectsController.js",
+                    "~/Scripts/app/tagsController.js",
+                    "~/Scripts/app/addTaskController.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
