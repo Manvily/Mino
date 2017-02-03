@@ -1,10 +1,15 @@
 ﻿@using Mino.Models
-@model IEnumerable<Tasks>
+@model Mino.ViewModels.WeeklyTasksViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Next 7 days";
 }
-<ul class="tasks">
-    @foreach (var task in Model)
+
+@foreach (var day in Model.Tasks)
+{
+    <h1>@day.Key</h1>
+    <br/>
+    <ul class="tasks">
+    @foreach (var task in day.Value)
     {
         <li>
             <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
@@ -58,12 +63,7 @@
         </li>
      }
 </ul>
-
-
-
-
-
-
+}
 
 @section scripts
 {
@@ -73,4 +73,3 @@
         });
     </script>
 }
-
