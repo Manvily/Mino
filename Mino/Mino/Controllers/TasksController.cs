@@ -45,7 +45,7 @@ namespace Mino.Controllers
                     x.UserId == userId &&
                     !x.IsDone &&
                     x.DateTime.HasValue &&
-                    x.DateTime > today &&
+                    x.DateTime >= today &&
                     x.DateTime < tomorrow)
                     .Include(p => p.Project)
                     .Include(t => t.Tag)
@@ -71,11 +71,11 @@ namespace Mino.Controllers
             var week = new Dictionary<string, IEnumerable<Tasks>>
             {
                 {
-                    GetDayName(0),
+                    "Today",
                     GetTasksInDay(0, tasks)
                 },
                 {
-                    GetDayName(1),
+                    "Tomorrow",
                     GetTasksInDay(1, tasks)
                 },
                 {

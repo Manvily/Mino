@@ -42,13 +42,17 @@ textarea {
   border-color: #080808;
 }
 /* Task view */
+.tasks-container {
+  margin-top: 40px;
+}
+.tasks-container h2 {
+  margin-top: 35px;
+  margin-bottom: 0;
+}
 .tasks {
   list-style: none;
   padding-right: 40px;
   padding-left: 25px;
-}
-.tasks li:first-child {
-  margin-top: 40px;
 }
 .tasks li:nth-child(even) {
   background-color: #f3f3f3;

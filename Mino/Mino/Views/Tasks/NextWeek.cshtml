@@ -4,66 +4,66 @@
     ViewBag.Title = "Next 7 days";
 }
 
-@foreach (var day in Model.Tasks)
-{
-    <h1>@day.Key</h1>
-    <br/>
-    <ul class="tasks">
-    @foreach (var task in day.Value)
+<div class="tasks-container">
+    @foreach (var day in Model.Tasks)
     {
-        <li>
-            <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
-                 @if (task.DateTime != null)
-                 {
-                     @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
-                     @: data-time="@task.DateTime.Value.ToString("HH:mm")"
-                 }>
-                <div class="task-tick">
-                    <a href="#">
-                        <i class="glyphicon glyphicon-unchecked"></i>
-                    </a>
-                </div>
-                <div class="task-name">
-                    @task.Name
-                </div>
-               
-                <div class="task-attributes">
-                    <div class="attr-section">
-                        <span class="glyphicon glyphicon-record" style="color: #234;" aria-hidden="true"></span>
-                        <span>
-                            @if (task.ProjectId != null)
-                            {
-                                @task.Project.Name
-                            }
-                            else
-                            {
-                                @:Inbox
-                            }
-                        </span>
+        <h2>@day.Key</h2>
+        <br />
+        <ul class="tasks">
+            @foreach (var task in day.Value)
+            {
+                <li>
+                    <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
+                         @if (task.DateTime != null) { @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
+                             @: data-time="@task.DateTime.Value.ToString("HH:mm")"
+                         }>
+                        <div class="task-tick">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-unchecked"></i>
+                            </a>
+                        </div>
+                        <div class="task-name">
+                            @task.Name
+                        </div>
+
+                        <div class="task-attributes">
+                            <div class="attr-section">
+                                <span class="glyphicon glyphicon-record" style="color: #234;" aria-hidden="true"></span>
+                                <span>
+                                    @if (task.ProjectId != null)
+                                    {
+                                        @task.Project.Name
+                                    }
+                                    else
+                                    {
+                                        @:Inbox
+                                    }
+                                </span>
+                            </div>
+                            <div class="attr-section">
+                                <span class="glyphicon glyphicon-pushpin"></span>
+                                <span>
+                                    @{
+                                        var priority = (Tasks.Priorities)task.Priority;
+                                        var priorityName = priority.ToString();
+                                    }
+                                    @priorityName
+                                </span>
+                            </div>
+                            <div class="attr-section">
+                                @if (task.TagId != null)
+                                {
+                                    <span class="glyphicon glyphicon-flag"></span>
+                                    <span>@task.Tag.Name</span>
+                                }
+                            </div>
+                        </div>
                     </div>
-                    <div class="attr-section">
-                        <span class="glyphicon glyphicon-pushpin"></span>
-                        <span>
-                            @{
-                                var priority = (Tasks.Priorities)task.Priority;
-                                var priorityName = priority.ToString();
-                            }
-                            @priorityName
-                        </span>
-                    </div>
-                    <div class="attr-section">
-                        @if (task.TagId != null)
-                        {
-                            <span class="glyphicon glyphicon-flag"></span>
-                            <span>@task.Tag.Name</span>
-                        }
-                    </div>
-                </div>
-            </div>
-        </li>
-     }
-</ul>
-}
+                </li>
+            }
+        </ul>
+    }
+</div>
 
 @section scripts
 {
