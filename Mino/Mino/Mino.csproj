@@ -242,6 +242,10 @@
     <Compile Include="Migrations\201701310353174_AddPriorioritiesInTask.Designer.cs">
       <DependentUpon>201701310353174_AddPriorioritiesInTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.cs" />
+    <Compile Include="Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.Designer.cs">
+      <DependentUpon>201702040857430_RemoveUserNameFromPreviousFailedTry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -373,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701310353174_AddPriorioritiesInTask.resx">
       <DependentUpon>201701310353174_AddPriorioritiesInTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.resx">
+      <DependentUpon>201702040857430_RemoveUserNameFromPreviousFailedTry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
