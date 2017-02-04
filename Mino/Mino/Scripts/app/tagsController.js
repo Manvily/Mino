@@ -1,7 +1,11 @@
-﻿var TagsController = function (tagService) {
+﻿var TagsController = function (tagsService) {
 
     var getTagName = function () {
         return $(".js-tag-name").val();
+    }
+
+    var getTagId = function(tag) {
+        return tag.attr("data-id");
     }
 
     var showForm = function () {
@@ -18,12 +22,17 @@
     }
 
     var createTag = function () {
-        tagService.create(getTagName(), done, fail);
+        tagsService.create(getTagName(), done, fail);
+    }
+
+    var deleteTag = function (tag) {
+        tagsService.delet(getTagId(tag), done, fail);
     }
 
     var init = function () {
         $(".js-show-tag-form").on("click", showForm);
         $(".js-create-tag").on("click", createTag);
+        $(".js-delete-tag").on("click", function () { deleteTag($(this)) });
     }
 
     return {

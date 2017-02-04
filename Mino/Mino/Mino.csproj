@@ -212,6 +212,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Dtos\ProjectDto.cs" />
     <Compile Include="Dtos\TagDto.cs" />
@@ -349,6 +350,7 @@
     <Content Include="Views\Shared\SidebarPartial.cshtml" />
     <Content Include="Views\Tasks\NextWeek.cshtml" />
     <Content Include="Views\Projects\Show.cshtml" />
+    <Content Include="Views\Tags\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

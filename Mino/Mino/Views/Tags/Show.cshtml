@@ -1,0 +1,21 @@
+﻿@model  IEnumerable<Mino.Models.Tag>
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>Manage tags</h2>
+
+<ul class="projects-list">
+    @foreach (var tag in Model)
+    {
+        <li>
+            <div class="project-box">
+                <span class="glyphicon glyphicon-tag"></span>
+                <span class="name">@tag.Name</span>
+                <div class="actions">
+                    <a href="#" class="js-delete-tag" data-id="@tag.Id">Delete</a>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
