@@ -16,7 +16,7 @@ namespace Mino.Controllers.Api
             _context = new ApplicationDbContext();
         }
 
-        [HttpPut]
+        [HttpPost]
         public IHttpActionResult Create(TaskDto dto)
         {
             var userTask = new Tasks
@@ -55,6 +55,20 @@ namespace Mino.Controllers.Api
             a.Id == dto.TaskId);
 
             _context.Tasks.Remove(task);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public IHttpActionResult Finish(TaskDto dto)
+        {
+            var userId = User.Identity.GetUserId();
+            var task = _context.Tasks.Single(a =>
+                a.UserId == userId &&
+                a.Id == dto.TaskId);
+
+            task.Finish();
             _context.SaveChanges();
 
             return Ok();

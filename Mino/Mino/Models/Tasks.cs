@@ -44,5 +44,10 @@ namespace Mino.Models
             DateTime = dateTime;
             Priority = priority;
         }
+
+        public void Finish()
+        {
+            IsDone = true;
+        }
     }
 }

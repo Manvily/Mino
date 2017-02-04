@@ -26,9 +26,16 @@ var EditTaskService = function () {
         .fail(fail);
     }
 
+    var finish = function(taskId, done, fail) {
+        $.post("/api/tasks/finish", { taskId: taskId })
+            .done(done)
+            .fail(fail);
+    }
+
     return {
         edit: edit,
-        delet: delet
+        delet: delet,
+        finish: finish
     }
 }();
 

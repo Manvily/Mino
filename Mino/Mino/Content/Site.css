@@ -108,7 +108,7 @@ textarea {
   top: 9px;
   left: 10px;
 }
-.tasks li .task-box .task-tick i.glyphicon-unchecked {
+.tasks li .task-box .task-tick i.glyphicon {
   font-size: 2.5em;
   color: #a1a1a1;
 }

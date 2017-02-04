@@ -2,12 +2,24 @@
 
     var taskId = $("#Task_Id");
 
-    var done = function () {
+    var doneEdit = function () {
         location.reload();
+    }
+
+    var doneFinish = function (task) {
+        var li = task.closest("li");
+        li.toggleClass("animated fadeOut");
+        setTimeout(function () {
+            li.toggleClass("hidden");
+        },700);
     }
 
     var fail = function () {
         alert("Something failed!");
+    }
+
+    var getDoneTaskId = function (task) {
+        return task.closest(".task-box").attr("data-task-id");
     }
 
     var showForm = function () {
@@ -44,17 +56,30 @@
     }
 
     var editTask = function () {
-        editTaskService.edit(taskId.val(), done, fail);
+        editTaskService.edit(taskId.val(), doneEdit, fail);
     }
 
     var deleteTask = function () {
-        editTaskService.delet(taskId.val(), done, fail);
+        editTaskService.delet(taskId.val(), doneEdit, fail);
+    }
+
+    var changeGlyphicon = function (task) {
+        task.toggleClass("glyphicon-unchecked").toggleClass("glyphicon-check");
+    }
+
+    var finishTask = function (task) {
+        editTaskService.finish(getDoneTaskId(task), doneFinish(task), fail);
     }
 
     var init = function () {
         $(".js-task-box").on("click", function () { openForm($(this)) });
         $(".js-edit-task").on("click", editTask);
         $(".js-delete-task").on("click", deleteTask);
+        $(".js-toggle-task").hover(function () { changeGlyphicon($(this)) });
+        $(".js-toggle-task").on("click", function (e) {
+            finishTask($(this));
+            e.stopPropagation();
+        });
     }
 
     return {
