@@ -51,15 +51,60 @@ textarea {
     border-color: #080808;
 }
 
-/* Task view */
+/* Project list view */
 
-.tasks-container{
-     margin-top: 40px;
+.projects-list{
+    list-style: none;
 
-     h2{
-         margin-top: 35px;
-         margin-bottom: 0;
-     }
+    li:nth-child(even) {
+        background-color: #f3f3f3;
+    }
+
+    li:hover {
+        background-color: #ebebeb;
+    }
+
+    li{
+        position: relative;
+        margin-top: 50px;
+        border: 0.8px #949494 solid;
+        border-radius: 4px;
+        padding: 5px;
+        width: 300px;
+
+
+        .project-box{
+
+            .glyphicon{
+                font-size: 50px;
+                top: 3px;
+            }
+            
+            .name{
+                position: absolute;
+                left: 60px;
+                top: 3px;
+                font-size: 20px;
+            }
+
+            .actions{
+                position: absolute;
+                left: 60px;
+                top: 34px;
+            }
+        }
+    }
+}
+
+/* Task list view */
+
+.tasks-container {
+    margin-top: 40px;
+
+    h2 {
+        margin-top: 35px;
+        margin-bottom: 0;
+    }
 }
 
 .tasks {
@@ -71,7 +116,7 @@ textarea {
         background-color: #f3f3f3;
     }
 
-    li:hover{
+    li:hover {
         background-color: #ebebeb;
     }
 
@@ -250,5 +295,3 @@ textarea {
         }
     }
 }
-
-

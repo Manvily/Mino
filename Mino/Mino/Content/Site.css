@@ -41,7 +41,40 @@ textarea {
   background-color: #0f1626;
   border-color: #080808;
 }
-/* Task view */
+/* Project list view */
+.projects-list {
+  list-style: none;
+}
+.projects-list li:nth-child(even) {
+  background-color: #f3f3f3;
+}
+.projects-list li:hover {
+  background-color: #ebebeb;
+}
+.projects-list li {
+  position: relative;
+  margin-top: 50px;
+  border: 0.8px #949494 solid;
+  border-radius: 4px;
+  padding: 5px;
+  width: 300px;
+}
+.projects-list li .project-box .glyphicon {
+  font-size: 50px;
+  top: 3px;
+}
+.projects-list li .project-box .name {
+  position: absolute;
+  left: 60px;
+  top: 3px;
+  font-size: 20px;
+}
+.projects-list li .project-box .actions {
+  position: absolute;
+  left: 60px;
+  top: 34px;
+}
+/* Task list view */
 .tasks-container {
   margin-top: 40px;
 }
