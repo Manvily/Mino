@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Mino.Models.Project>
 
 @{
-    ViewBag.Title = "Show";
+    ViewBag.Title = "Manage projects";
 }
 
-<h2>Show</h2>
+<h2>Manage projects</h2>
 <ul class="projects-list">
     @foreach (var project in Model)
     {
@@ -13,7 +13,7 @@
                 <span class="glyphicon glyphicon-record"></span>
                 <span class="name">@project.Name</span>
                 <div class="actions">
-                    <a href="#" class="js-delete-project">Delete</a>
+                    <a href="#" class="js-delete-project" data-id="@project.Id">Delete</a>
                 </div>
             </div>
         </li>

@@ -8,6 +8,10 @@
         return $(".js-project-color").val();
     }
 
+    var getProjectId = function (project) {
+        return project.attr("data-id");
+    }
+
     var done = function () {
         location.reload();
     }
@@ -25,9 +29,14 @@
         projectsService.create(getProjectName(), getProjectColor(), done, fail);
     }
 
+    var deleteProject = function (project) {
+        projectsService.delet(getProjectId(project), done, fail);
+    }
+
     var init = function () {
         $(".js-show-project-form").on("click", showForm);
         $(".js-create-project").on("click", createProject);
+        $(".js-delete-project").on("click", function () { deleteProject($(this)) });
     }
 
     return {
