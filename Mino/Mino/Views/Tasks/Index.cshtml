@@ -1,17 +1,24 @@
 ﻿@using Mino.Models
-@model IEnumerable<Tasks>
+@model Mino.ViewModels.TasksViewModel
 @{
     ViewBag.Title = "Index";
 }
+
 <div class="tasks-container">
+    @if (Model.TitleName != null)
+    {
+        <h2 class="overdue">@Model.TitleName</h2>
+    }
     <ul class="tasks">
-        @foreach (var task in Model)
+        @foreach (var task in Model.Tasks)
         {
             <li>
                 <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
-                     @if (task.DateTime != null) { @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
-                                          @: data-time="@task.DateTime.Value.ToString("HH:mm")"
-                                      }>
+                     @if (task.DateTime != null)
+                     {
+                         @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
+                         @: data-time="@task.DateTime.Value.ToString("HH:mm")"
+                     }>
                     <div class="task-tick">
                         <a href="#">
                             <i class="glyphicon glyphicon-unchecked js-toggle-task"></i>
@@ -32,14 +39,14 @@
                                 else
                                 {
                                     @:Inbox
-                            }
+                                }
                             </span>
                         </div>
                         <div class="attr-section">
                             <span class="glyphicon glyphicon-pushpin"></span>
                             <span>
                                 @{
-                                    var priority = (Tasks.Priorities)task.Priority;
+                                    var priority = (Tasks.Priorities) task.Priority;
                                     var priorityName = priority.ToString();
                                 }
                                 @priorityName
@@ -55,7 +62,7 @@
                     </div>
                 </div>
             </li>
-                                    }
+        }
     </ul>
 </div>
 

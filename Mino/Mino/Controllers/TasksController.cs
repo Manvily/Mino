@@ -31,7 +31,9 @@ namespace Mino.Controllers
                     .Include(t => t.Tag)
                     .ToList();
 
-            return View(tasks);
+            var viewModel = new TasksViewModel(tasks);
+
+            return View("Index", viewModel);
         }
 
         public ActionResult Today()
@@ -51,7 +53,9 @@ namespace Mino.Controllers
                     .Include(t => t.Tag)
                     .ToList();
 
-            return View("index", tasks);
+            var viewModel = new TasksViewModel(tasks, "Today");
+
+            return View("Index", viewModel);
         }
 
         public ActionResult NextWeek()
@@ -134,7 +138,9 @@ namespace Mino.Controllers
                     .Include(t => t.Tag)
                     .ToList();
 
-            return View("Index", tasks);
+            var viewModel = new TasksViewModel(tasks);
+
+            return View("Index", viewModel);
         }
 
         public ActionResult Tag(int tagId)
@@ -149,7 +155,25 @@ namespace Mino.Controllers
                     .Include(t => t.Tag)
                     .ToList();
 
-            return View("Index", tasks);
+            var viewModel = new TasksViewModel(tasks);
+
+            return View("Index", viewModel);
+        }
+
+        public ActionResult Overdue()
+        {
+            var userId = User.Identity.GetUserId();
+            var tasks = _context.Tasks.Where(x =>
+            x.UserId == userId &&
+            !x.IsDone &&
+            x.DateTime < DateTime.Today)
+            .Include(p => p.Project)
+            .Include(t => t.Tag)
+            .ToList();
+
+            var viewModel = new TasksViewModel(tasks, "Overdue");
+
+            return PartialView("Index", viewModel);
         }
 
         [ChildActionOnly]
