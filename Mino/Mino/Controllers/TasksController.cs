@@ -183,10 +183,32 @@ namespace Mino.Controllers
             var projects = _context.Projects.Where(x => x.UserId == userId);
             var tags = _context.Tags.Where(x => x.UserId == userId);
 
+            var colorss = new List<SelectListItem>
+            {
+                new SelectListItem {Text = "BLUE", Value = "BLUE"},
+                new SelectListItem {Text = "AQUA", Value = "AQUA"},
+                new SelectListItem {Text = "TEAL", Value = "TEAL"},
+                new SelectListItem {Text = "OLIVE", Value = "OLIVE"},
+                new SelectListItem {Text = "GREEN", Value = "GREEN"},
+                new SelectListItem {Text = "LIME", Value = "LIME"},
+                new SelectListItem {Text = "YELLOW", Value = "YELLOW"},
+                new SelectListItem {Text = "ORANGE", Value = "ORANGE"},
+                new SelectListItem {Text = "RED", Value = "RED"},
+                new SelectListItem {Text = "MAROON", Value = "MAROON"},
+                new SelectListItem {Text = "FUCHSIA", Value = "FUCHSIA"},
+                new SelectListItem {Text = "PURPLE", Value = "PURPLE"},
+                new SelectListItem {Text = "BLACK", Value = "BLACK"},
+                new SelectListItem {Text = "GRAY", Value = "GRAY"},
+                new SelectListItem {Text = "SILVER", Value = "SILVER"}
+            };
+
+            IEnumerable<SelectListItem> colors = colorss;
+
             var viewModel = new SidebarViewModel
             {
                 Projects = projects,
-                Tags = tags
+                Tags = tags,
+                ColorType = colors
             };
 
             return PartialView(viewModel);

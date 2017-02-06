@@ -32,6 +32,52 @@ select,
 textarea {
   max-width: 280px;
 }
+/* Color set */
+.BLUE {
+  color: #0074D9 !important;
+}
+.AQUA {
+  color: #7FDBFF;
+}
+.TEAL {
+  color: #39CCCC;
+}
+.OLIVE {
+  color: #3D9970;
+}
+.GREEN {
+  color: #2ECC40;
+}
+.LIME {
+  color: #01FF70;
+}
+.YELLOW {
+  color: #FFDC00;
+}
+.ORANGE {
+  color: #FF851B;
+}
+.RED {
+  color: #FF4136;
+}
+.MAROON {
+  color: #85144b !important;
+}
+.FUCHSIA {
+  color: #F012BE;
+}
+.PURPLE {
+  color: #B10DC9;
+}
+.BLACK {
+  color: #111111;
+}
+.GRAY {
+  color: #AAAAAA;
+}
+.SILVER {
+  color: #DDDDDD;
+}
 /* Bootstrap overrides */
 #createModal h4,
 #createModal .h4 {
@@ -40,6 +86,9 @@ textarea {
 .navbar-inverse {
   background-color: #0f1626;
   border-color: #080808;
+}
+.project-color {
+  font-size: 20px;
 }
 /* Project list view */
 .projects-list {

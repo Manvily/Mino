@@ -33,10 +33,17 @@
         projectsService.delet(getProjectId(project), done, fail);
     }
 
+    var setFormColors = function() {
+        $(".js-project-color option").each(function() {
+            $(this).addClass($(this).val());
+        });
+    }
+
     var init = function () {
         $(".js-show-project-form").on("click", showForm);
         $(".js-create-project").on("click", createProject);
         $(".js-delete-project").on("click", function () { deleteProject($(this)) });
+        setFormColors();
     }
 
     return {

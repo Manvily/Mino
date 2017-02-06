@@ -56,7 +56,7 @@
                     @Html.ActionLink("Next 7 days", "NextWeek", "Tasks", null, new { @class = "sidebar-item-text" })
                 </li>
                 <li class="sidebar-item">
-                     @Html.ActionLink("Default inbox", "Index", "Tasks", null, new { @class = "sidebar-item-text" })
+                    @Html.ActionLink("Default inbox", "Index", "Tasks", null, new { @class = "sidebar-item-text" })
                 </li>
                 <li class="sidebar-item">
                     <a href="#sub-projects" data-toggle="collapse" data-parent="#sub-projects" data-remote="true">
@@ -72,7 +72,7 @@
                             {
                                 <li class="sidebar-item">
                                     <a href="@Url.Action("Project", "Tasks", new {projectId = @project.Id})">
-                                        <span class="glyphicon glyphicon-record" style="color: @project.Color;" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-record @project.Color" aria-hidden="true"></span>
                                         <span class="sidebar-menu-in-item-text">@project.Name</span>
                                     </a>
                                 </li>
@@ -140,7 +140,7 @@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(p => p.Project.Color)
-                    @Html.TextBoxFor(p => p.Project.Color, new { @class = "form-control js-project-color", placeholder = "eg. #333333" })
+                    @Html.DropDownListFor(c => c.Project.Color, Model.ColorType, "", new {@class= "form-control project-color js-project-color" })
                 </div>
             }
             <button class="btn btn-success btn-sm pull-right js-create-project">Create</button>

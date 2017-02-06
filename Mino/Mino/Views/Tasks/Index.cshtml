@@ -13,6 +13,8 @@
         @foreach (var task in Model.Tasks)
         {
             <li>
+                @{ string projectColor = (task.ProjectId != null) ? task.Project.Color : "";}
+
                 <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
                      @if (task.DateTime != null)
                      {
@@ -29,8 +31,8 @@
                     </div>
 
                     <div class="task-attributes">
-                        <div class="attr-section">
-                            <span class="glyphicon glyphicon-record" style="color: #234;" aria-hidden="true"></span>
+                        <div class="attr-section ">
+                            <span class="glyphicon glyphicon-record @projectColor " aria-hidden="true"></span>
                             <span>
                                 @if (task.ProjectId != null)
                                 {

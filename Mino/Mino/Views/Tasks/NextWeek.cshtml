@@ -13,8 +13,12 @@
             @foreach (var task in day.Value)
             {
                 <li>
+                    @{ string projectColor = (task.ProjectId != null) ? task.Project.Color : "";}
+
                     <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
-                         @if (task.DateTime != null) { @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
+                         @if (task.DateTime != null)
+                         {
+                             @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
                              @: data-time="@task.DateTime.Value.ToString("HH:mm")"
                          }>
                         <div class="task-tick">
@@ -28,7 +32,7 @@
 
                         <div class="task-attributes">
                             <div class="attr-section">
-                                <span class="glyphicon glyphicon-record" style="color: #234;" aria-hidden="true"></span>
+                                <span class="glyphicon glyphicon-record @projectColor" aria-hidden="true"></span>
                                 <span>
                                     @if (task.ProjectId != null)
                                     {
@@ -44,7 +48,7 @@
                                 <span class="glyphicon glyphicon-pushpin"></span>
                                 <span>
                                     @{
-                                        var priority = (Tasks.Priorities)task.Priority;
+                                        var priority = (Tasks.Priorities) task.Priority;
                                         var priorityName = priority.ToString();
                                     }
                                     @priorityName
