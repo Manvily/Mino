@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Dtos;
-using Mino.Models;
-using System.Linq;
+using Mino.Persistence;
 using System.Web.Http;
+using Mino.Core.Dtos;
+using Mino.Core.Models;
 
 namespace Mino.Controllers.Api
 {
     [Authorize]
     public class TagsController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
         public TagsController()
         {
-            _context = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(context);
         }
 
         [HttpPost]
@@ -25,21 +26,21 @@ namespace Mino.Controllers.Api
                 UserId = User.Identity.GetUserId()
             };
 
-            _context.Tags.Add(tag);
-            _context.SaveChanges();
+            _unitOfWork.Tags.Add(tag);
+            _unitOfWork.Complete();
 
             return Ok();
         }
 
+        //todo be carefoul HTTPDELETE
         public IHttpActionResult Delete(TagDto dto)
         {
-            var userId = User.Identity.GetUserId();
-            var tag = _context.Tags.Single(x =>
-            x.UserId == userId &&
-            x.Id == dto.Id);
+            var tag =
+                _unitOfWork.Tags
+                .GetUserTag(User.Identity.GetUserId(), dto.Id);
 
-            _context.Tags.Remove(tag);
-            _context.SaveChanges();
+            _unitOfWork.Tags.Remove(tag);
+            _unitOfWork.Complete();
 
             return Ok();
         }

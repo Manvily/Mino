@@ -1,27 +1,30 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Models;
-using System.Linq;
+using Mino.Persistence;
 using System.Web.Mvc;
+using Mino.Core.Models;
+using Mino.Core.ViewModels;
 
 namespace Mino.Controllers
 {
     public class TagsController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
         public TagsController()
         {
-            _context = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(context);
         }
 
         public ActionResult Show()
         {
-            var userId = User.Identity.GetUserId();
-            var tags = _context.Tags.Where(x =>
-                x.UserId == userId)
-                .ToList();
+            var viewModel =
+                new TagsViewModel(_unitOfWork.Tags
+                .GetUserTags(User.Identity.GetUserId()));
 
-            return View(tags);
+            return View(viewModel);
         }
+
+
     }
 }

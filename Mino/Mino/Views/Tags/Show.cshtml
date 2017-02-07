@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<Mino.Models.Tag>
+﻿@model  Mino.Core.ViewModels.TagsViewModel
 @{
     ViewBag.Title = "Show";
 }
@@ -6,7 +6,7 @@
 <h2>Manage tags</h2>
 
 <ul class="projects-list">
-    @foreach (var tag in Model)
+    @foreach (var tag in Model.Tags)
     {
         <li>
             <div class="project-box">

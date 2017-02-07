@@ -1,27 +1,31 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Models;
-using System.Linq;
+using Mino.Persistence;
 using System.Web.Mvc;
+using Mino.Core.Models;
+using Mino.Core.ViewModels;
 
 namespace Mino.Controllers
 {
     public class ProjectsController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
+
 
         public ProjectsController()
         {
-            _context = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(context);
+
         }
 
         public ActionResult Show()
         {
-            var userId = User.Identity.GetUserId();
-            var projects = _context.Projects.Where(x =>
-                x.UserId == userId)
-                .ToList();
+            var viewModel =
+                new ProjectsViewModel(_unitOfWork.Projects
+                .GetUserProjects(User.Identity.GetUserId()));
 
-            return View(projects);
+            return View(viewModel);
         }
+
     }
 }

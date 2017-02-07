@@ -87,8 +87,10 @@ textarea {
   background-color: #0f1626;
   border-color: #080808;
 }
-.project-color {
-  font-size: 20px;
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 /* Project list view */
 .projects-list {
@@ -279,4 +281,7 @@ textarea {
 }
 #sidebar-wrapper .edit-task-content .btn {
   margin-left: 10px;
+}
+#sidebar-wrapper .project-color {
+  font-size: 20px;
 }

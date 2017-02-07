@@ -1,19 +1,20 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Dtos;
-using Mino.Models;
-using System.Linq;
+using Mino.Persistence;
 using System.Web.Http;
+using Mino.Core.Dtos;
+using Mino.Core.Models;
 
 namespace Mino.Controllers.Api
 {
     [Authorize]
     public class ProjectsController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
         public ProjectsController()
         {
-            _context = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(context);
         }
 
         [HttpPost]
@@ -26,8 +27,8 @@ namespace Mino.Controllers.Api
                 UserId = User.Identity.GetUserId()
             };
 
-            _context.Projects.Add(project);
-            _context.SaveChanges();
+            _unitOfWork.Projects.Add(project);
+            _unitOfWork.Complete();
 
             return Ok();
         }
@@ -36,12 +37,10 @@ namespace Mino.Controllers.Api
         public IHttpActionResult Delete(ProjectDto dto)
         {
             var userId = User.Identity.GetUserId();
-            var project = _context.Projects.Single(x =>
-            x.Id == dto.Id &&
-            x.UserId == userId);
+            var project = _unitOfWork.Projects.GetUserProject(userId, dto.Id);
 
-            _context.Projects.Remove(project);
-            _context.SaveChanges();
+            _unitOfWork.Projects.Remove(project);
+            _unitOfWork.Complete();
 
             return Ok();
         }

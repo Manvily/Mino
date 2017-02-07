@@ -1,32 +1,33 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Dtos;
-using Mino.Models;
-using System.Linq;
+using Mino.Persistence;
 using System.Web.Http;
+using Mino.Core.Dtos;
+using Mino.Core.Models;
 
 namespace Mino.Controllers.Api
 {
     [Authorize]
     public class TasksController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly UnitOfWork _unitOfWork;
 
         public TasksController()
         {
-            _context = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
+            _unitOfWork = new UnitOfWork(context);
         }
 
         [HttpPost]
         public IHttpActionResult Create(TaskDto dto)
         {
-            var userTask = new Tasks
+            var task = new Tasks
             {
                 Name = dto.Name,
                 UserId = User.Identity.GetUserId()
             };
 
-            _context.Tasks.Add(userTask);
-            _context.SaveChanges();
+            _unitOfWork.Tasks.Add(task);
+            _unitOfWork.Complete();
 
             return Ok();
         }
@@ -34,14 +35,17 @@ namespace Mino.Controllers.Api
         [HttpPost]
         public IHttpActionResult Edit(TaskDto dto)
         {
-            var userId = User.Identity.GetUserId();
-            var task = _context.Tasks.Single(g =>
-            g.Id == dto.TaskId &&
-            g.UserId == userId);
+            var task =
+                _unitOfWork.Tasks
+                .GetUserTask(User.Identity.GetUserId(), dto.TaskId);
 
-            task.Modify(dto.Name, dto.Priority, dto.ProjectId, dto.TagId, dto.GetDateTime());
+            task.Modify(dto.Name,
+                dto.Priority,
+                dto.ProjectId,
+                dto.TagId,
+                dto.GetDateTime());
 
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return Ok();
         }
@@ -49,13 +53,12 @@ namespace Mino.Controllers.Api
         [HttpDelete]
         public IHttpActionResult Delete(TaskDto dto)
         {
-            var userId = User.Identity.GetUserId();
-            var task = _context.Tasks.Single(a =>
-            a.UserId == userId &&
-            a.Id == dto.TaskId);
+            var task =
+                _unitOfWork.Tasks
+                .GetUserTask(User.Identity.GetUserId(), dto.TaskId);
 
-            _context.Tasks.Remove(task);
-            _context.SaveChanges();
+            _unitOfWork.Tasks.Remove(task);
+            _unitOfWork.Complete();
 
             return Ok();
         }
@@ -63,13 +66,12 @@ namespace Mino.Controllers.Api
         [HttpPost]
         public IHttpActionResult Finish(TaskDto dto)
         {
-            var userId = User.Identity.GetUserId();
-            var task = _context.Tasks.Single(a =>
-                a.UserId == userId &&
-                a.Id == dto.TaskId);
+            var task =
+                _unitOfWork.Tasks
+                .GetUserTask(User.Identity.GetUserId(), dto.TaskId);
 
             task.Finish();
-            _context.SaveChanges();
+            _unitOfWork.Complete();
 
             return Ok();
         }

@@ -74,6 +74,26 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.0.17.0\lib\net45\Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Extensions.Conventions.3.2.0.0\lib\net45-full\Ninject.Extensions.Conventions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject.Web.WebApi, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.WebApi.3.2.4.0\lib\net45-full\Ninject.Web.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -139,6 +159,10 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -202,9 +226,27 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Core\ViewModels\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Core\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Core\ViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Core\ViewModels\ExternalLoginListViewModel.cs" />
+    <Compile Include="Core\ViewModels\FactorViewModel.cs" />
+    <Compile Include="Core\ViewModels\ForgotViewModel.cs" />
+    <Compile Include="Core\ViewModels\IndexViewModel.cs" />
+    <Compile Include="Core\ViewModels\LoginViewModel.cs" />
+    <Compile Include="Core\ViewModels\ManageLoginsViewModel.cs" />
+    <Compile Include="Core\ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Core\ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="Core\ViewModels\SendCodeViewModel.cs" />
+    <Compile Include="Core\ViewModels\SetPasswordViewModel.cs" />
+    <Compile Include="Core\ViewModels\VerifyCodeViewModel.cs" />
+    <Compile Include="Core\ViewModels\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Persistence\ControllerHelper\ProjectColors.cs" />
+    <Compile Include="Persistence\ControllerHelper\NextWeek.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\ProjectsController.cs" />
     <Compile Include="Controllers\Api\TagsController.cs" />
@@ -214,58 +256,69 @@
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
-    <Compile Include="Dtos\ProjectDto.cs" />
-    <Compile Include="Dtos\TagDto.cs" />
-    <Compile Include="Dtos\TaskDto.cs" />
+    <Compile Include="Core\Dtos\ProjectDto.cs" />
+    <Compile Include="Core\Dtos\TagDto.cs" />
+    <Compile Include="Core\Dtos\TaskDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701230525164_InitialCreate.cs" />
-    <Compile Include="Migrations\201701230525164_InitialCreate.Designer.cs">
+    <Compile Include="Persistence\EntityConfigurations\ProjectConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\TagConfiguration.cs" />
+    <Compile Include="Persistence\EntityConfigurations\TasksConfiguration.cs" />
+    <Compile Include="Persistence\Migrations\201701230525164_InitialCreate.cs" />
+    <Compile Include="Persistence\Migrations\201701230525164_InitialCreate.Designer.cs">
       <DependentUpon>201701230525164_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701230708331_AddTaskTable.cs" />
-    <Compile Include="Migrations\201701230708331_AddTaskTable.Designer.cs">
+    <Compile Include="Persistence\Migrations\201701230708331_AddTaskTable.cs" />
+    <Compile Include="Persistence\Migrations\201701230708331_AddTaskTable.Designer.cs">
       <DependentUpon>201701230708331_AddTaskTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701230719377_AddTagTable.cs" />
-    <Compile Include="Migrations\201701230719377_AddTagTable.Designer.cs">
+    <Compile Include="Persistence\Migrations\201701230719377_AddTagTable.cs" />
+    <Compile Include="Persistence\Migrations\201701230719377_AddTagTable.Designer.cs">
       <DependentUpon>201701230719377_AddTagTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701230724516_AddProjectTable.cs" />
-    <Compile Include="Migrations\201701230724516_AddProjectTable.Designer.cs">
+    <Compile Include="Persistence\Migrations\201701230724516_AddProjectTable.cs" />
+    <Compile Include="Persistence\Migrations\201701230724516_AddProjectTable.Designer.cs">
       <DependentUpon>201701230724516_AddProjectTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701231021069_ChangeTasksTableName.cs" />
-    <Compile Include="Migrations\201701231021069_ChangeTasksTableName.Designer.cs">
+    <Compile Include="Persistence\Migrations\201701231021069_ChangeTasksTableName.cs" />
+    <Compile Include="Persistence\Migrations\201701231021069_ChangeTasksTableName.Designer.cs">
       <DependentUpon>201701231021069_ChangeTasksTableName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201701310353174_AddPriorioritiesInTask.cs" />
-    <Compile Include="Migrations\201701310353174_AddPriorioritiesInTask.Designer.cs">
+    <Compile Include="Persistence\Migrations\201701310353174_AddPriorioritiesInTask.cs" />
+    <Compile Include="Persistence\Migrations\201701310353174_AddPriorioritiesInTask.Designer.cs">
       <DependentUpon>201701310353174_AddPriorioritiesInTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.cs" />
-    <Compile Include="Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.Designer.cs">
+    <Compile Include="Persistence\Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.cs" />
+    <Compile Include="Persistence\Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.Designer.cs">
       <DependentUpon>201702040857430_RemoveUserNameFromPreviousFailedTry.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Project.cs" />
-    <Compile Include="Models\Tag.cs" />
-    <Compile Include="Models\Tasks.cs" />
+    <Compile Include="Persistence\Migrations\Configuration.cs" />
+    <Compile Include="Core\ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Core\Models\IdentityModels.cs" />
+    <Compile Include="Core\ViewModels\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="Core\Models\Project.cs" />
+    <Compile Include="Core\Models\Tag.cs" />
+    <Compile Include="Core\Models\Tasks.cs" />
+    <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Repositories\IProjectRepository.cs" />
+    <Compile Include="Core\Repositories\ITagRepository.cs" />
+    <Compile Include="Core\Repositories\ITaskRepository.cs" />
+    <Compile Include="Persistence\Repositories\ProjectRepository.cs" />
+    <Compile Include="Persistence\Repositories\TagRepository.cs" />
+    <Compile Include="Persistence\Repositories\TaskRepository.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\SidebarViewModel.cs" />
-    <Compile Include="ViewModels\TasksViewModel.cs" />
-    <Compile Include="ViewModels\WeeklyTasksViewModel.cs" />
+    <Compile Include="Core\ViewModels\ProjectsViewModel.cs" />
+    <Compile Include="Core\ViewModels\SidebarViewModel.cs" />
+    <Compile Include="Core\ViewModels\TagsViewModel.cs" />
+    <Compile Include="Core\ViewModels\TasksViewModel.cs" />
+    <Compile Include="Core\ViewModels\WeeklyTasksViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animate.css" />
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css">
@@ -275,19 +328,17 @@
       <DependentUpon>Site.css</DependentUpon>
     </Content>
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Content\Site.less" />
     <Content Include="ApplicationInsights.config" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\addTaskController.js" />
     <Content Include="Scripts\app\addTaskService.js" />
@@ -344,7 +395,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Shared\AddTaskPartial.cshtml" />
     <Content Include="Views\Shared\_UnloginLayout.cshtml" />
@@ -358,32 +408,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701230525164_InitialCreate.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201701230525164_InitialCreate.resx">
       <DependentUpon>201701230525164_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701230708331_AddTaskTable.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201701230708331_AddTaskTable.resx">
       <DependentUpon>201701230708331_AddTaskTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701230719377_AddTagTable.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201701230719377_AddTagTable.resx">
       <DependentUpon>201701230719377_AddTagTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701230724516_AddProjectTable.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201701230724516_AddProjectTable.resx">
       <DependentUpon>201701230724516_AddProjectTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701231021069_ChangeTasksTableName.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201701231021069_ChangeTasksTableName.resx">
       <DependentUpon>201701231021069_ChangeTasksTableName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201701310353174_AddPriorioritiesInTask.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201701310353174_AddPriorioritiesInTask.resx">
       <DependentUpon>201701310353174_AddPriorioritiesInTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.resx">
+    <EmbeddedResource Include="Persistence\Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.resx">
       <DependentUpon>201702040857430_RemoveUserNameFromPreviousFailedTry.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

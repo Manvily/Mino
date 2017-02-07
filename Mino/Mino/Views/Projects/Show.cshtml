@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Mino.Models.Project>
+﻿@model Mino.Core.ViewModels.ProjectsViewModel
 
 @{
     ViewBag.Title = "Manage projects";
@@ -6,7 +6,7 @@
 
 <h2>Manage projects</h2>
 <ul class="projects-list">
-    @foreach (var project in Model)
+    @foreach (var project in Model.Projects)
     {
         <li>
             <div class="project-box">
