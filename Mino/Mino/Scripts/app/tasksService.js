@@ -1,5 +1,5 @@
 ﻿
-var EditTaskService = function () {
+var TasksService = function () {
 
     var edit = function (taskId, done, fail) {
         $.post("/api/tasks/edit",
@@ -32,10 +32,17 @@ var EditTaskService = function () {
             .fail(fail);
     }
 
+    var create = function (name, done, fail) {
+        $.post("/api/tasks/create", { name: name })
+            .done(done)
+            .fail(fail);
+    }
+
     return {
         edit: edit,
         delet: delet,
-        finish: finish
+        finish: finish,
+        create: create
     }
 }();
 

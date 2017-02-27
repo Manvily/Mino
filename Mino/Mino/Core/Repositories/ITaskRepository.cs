@@ -13,5 +13,6 @@ namespace Mino.Core.Repositories
         Tasks GetUserTask(string userId, int id);
         void Add(Tasks task);
         void Remove(Tasks task);
+        IEnumerable<Tasks> SearchTasks(string userId, string query);
     }
 }

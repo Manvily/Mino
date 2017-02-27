@@ -1,4 +1,4 @@
-﻿var EditTaskController = function (editTaskService) {
+﻿var TasksController = function (tasksService) {
 
     var taskId = $("#Task_Id");
 
@@ -12,6 +12,11 @@
         setTimeout(function () {
             li.toggleClass("hidden");
         },700);
+    }
+
+    var doneAdd = function () {
+        $("#createModal").modal("hide");
+        location.reload();
     }
 
     var fail = function () {
@@ -56,11 +61,11 @@
     }
 
     var editTask = function () {
-        editTaskService.edit(taskId.val(), doneEdit, fail);
+        tasksService.edit(taskId.val(), doneEdit, fail);
     }
 
     var deleteTask = function () {
-        editTaskService.delet(taskId.val(), doneEdit, fail);
+        tasksService.delet(taskId.val(), doneEdit, fail);
     }
 
     var changeGlyphicon = function (task) {
@@ -68,7 +73,19 @@
     }
 
     var finishTask = function (task) {
-        editTaskService.finish(getDoneTaskId(task), doneFinish(task), fail);
+        tasksService.finish(getDoneTaskId(task), doneFinish(task), fail);
+    }
+
+    var showCreateModal = function () {
+        $("#createModal").modal("show");
+    }
+
+    var getNewTaskName = function () {
+        return $(".js-task-name").val();
+    }
+
+    var createTask = function () {
+        $(".js-task-create").on("click", tasksService.create(getNewTaskName(), doneAdd, fail));
     }
 
     var init = function () {
@@ -80,9 +97,18 @@
             finishTask($(this));
             e.stopPropagation();
         });
+        $(".js-show-modal").on("click", showCreateModal);
+        $(".js-task-create").on("click", createTask);
+        $(".js-search-tasks").keypress(function() {
+            console.log("Wpisywanie");
+        });
+        if ($(".js-search-tasks").val().length <= 0) {
+            // paste cutted start tasks
+            console.log("Pusto");
+        }
     }
 
     return {
         init: init
     }
-}(EditTaskService);
+}(TasksService);

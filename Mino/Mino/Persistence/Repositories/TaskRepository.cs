@@ -94,5 +94,16 @@ namespace Mino.Persistence.Repositories
         {
             _context.Tasks.Remove(task);
         }
+
+        public IEnumerable<Tasks> SearchTasks(string userId, string query)
+        {
+            return _context.Tasks.Where(g => 
+            g.Name.Contains(query) && 
+            !g.IsDone && 
+            g.UserId == userId)
+                .Include(t => t.Tag)
+                .Include(p => p.Project)
+                .ToList();
+        }
     }
 }

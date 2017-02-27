@@ -345,11 +345,9 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\app\addTaskController.js" />
-    <Content Include="Scripts\app\addTaskService.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\editTaskController.js" />
-    <Content Include="Scripts\app\editTaskService.js" />
+    <Content Include="Scripts\app\tasksController.js" />
+    <Content Include="Scripts\app\tasksService.js" />
     <Content Include="Scripts\app\projectsController.js" />
     <Content Include="Scripts\app\projectsService.js" />
     <Content Include="Scripts\app\tagsController.js" />

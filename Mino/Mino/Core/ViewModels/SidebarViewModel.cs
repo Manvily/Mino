@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Mino.Core.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
-using Mino.Core.Models;
 
 namespace Mino.Core.ViewModels
 {
@@ -14,5 +14,6 @@ namespace Mino.Core.ViewModels
         public Tag Tag { get; set; }
         public Tasks Task { get; set; }
         public IEnumerable<SelectListItem> ColorType { get; set; }
+        public string SearchTerm { get; set; }
     }
 }

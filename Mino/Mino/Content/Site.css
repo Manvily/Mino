@@ -285,3 +285,6 @@ textarea {
 #sidebar-wrapper .project-color {
   font-size: 20px;
 }
+#sidebar-wrapper .search-form {
+  padding: 10px;
+}

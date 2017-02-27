@@ -58,6 +58,15 @@
                 <li class="sidebar-item">
                     @Html.ActionLink("Default inbox", "Index", "Tasks", null, new { @class = "sidebar-item-text" })
                 </li>
+                <li>
+                    @using (Html.BeginForm("Search", "Tasks"))
+                    {
+                        <div class="form-group search-form">
+                            <label>Search for tasks</label>
+                            @Html.TextBoxFor(m => m.SearchTerm, new {@class = "form-control"})
+                        </div>
+                    }
+                </li>
                 <li class="sidebar-item">
                     <a href="#sub-projects" data-toggle="collapse" data-parent="#sub-projects" data-remote="true">
                         <span class="glyphicon glyphicon-briefcase sidebar-icon"></span>

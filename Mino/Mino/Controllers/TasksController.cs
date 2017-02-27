@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 using Mino.Core;
 using Mino.Core.Models;
 using Mino.Core.ViewModels;
@@ -17,11 +19,21 @@ namespace Mino.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string query = null)
         {
+            IEnumerable<Tasks> tasks;
+            if (String.IsNullOrEmpty(query))
+            {
+                tasks = _unitOfWork.Tasks
+                    .GetUserTasksByProject(User.Identity.GetUserId(), null);
+            }
+            else
+            {
+                tasks = _unitOfWork.Tasks.SearchTasks(User.Identity.GetUserId(), query);
+            }
+
             var viewModel =
-                new TasksViewModel(_unitOfWork.Tasks
-                .GetUserTasksByProject(User.Identity.GetUserId(), null));
+                    new TasksViewModel(tasks);
 
             return View("Index", viewModel);
         }
@@ -62,6 +74,12 @@ namespace Mino.Controllers
                 .GetUserTasksByTag(User.Identity.GetUserId(), tagId));
 
             return View("Index", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Search(SidebarViewModel viewModel)
+        {
+            return RedirectToAction("Index", "Tasks", new { query = viewModel.SearchTerm });
         }
 
         public ActionResult Overdue()

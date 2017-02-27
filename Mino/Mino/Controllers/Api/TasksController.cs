@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Persistence;
-using System.Web.Http;
 using Mino.Core.Dtos;
 using Mino.Core.Models;
+using Mino.Persistence;
+using System.Web.Http;
 
 namespace Mino.Controllers.Api
 {
@@ -72,6 +72,14 @@ namespace Mino.Controllers.Api
 
             task.Finish();
             _unitOfWork.Complete();
+
+            return Ok();
+        }
+
+        [HttpPost]
+        public IHttpActionResult Search(TaskDto dto)
+        {
+
 
             return Ok();
         }
