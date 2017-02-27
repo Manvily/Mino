@@ -36,7 +36,7 @@
                                 <span>
                                     @if (task.ProjectId != null)
                                     {
-                                        @task.Project.Name
+                                        @:<a href="@Url.Action("Project", "Tasks", new {projectId = task.ProjectId})" class="js-task-reference">@task.Project.Name</a>
                                     }
                                     else
                                     {
@@ -58,7 +58,7 @@
                                 @if (task.TagId != null)
                                 {
                                     <span class="glyphicon glyphicon-flag"></span>
-                                    <span>@task.Tag.Name</span>
+                                    <span><a href="@Url.Action("Tag", "Tasks", new { tagId = task.TagId})" class="js-task-reference">@task.Tag.Name</a></span>
                                 }
                             </div>
                         </div>

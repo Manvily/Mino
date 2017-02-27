@@ -80,7 +80,7 @@
                             @foreach (var project in Model.Projects)
                             {
                                 <li class="sidebar-item">
-                                    <a href="@Url.Action("Project", "Tasks", new {projectId = @project.Id})">
+                                    <a href="@Url.Action("Project", "Tasks", new {projectId = project.Id})">
                                         <span class="glyphicon glyphicon-record @project.Color" aria-hidden="true"></span>
                                         <span class="sidebar-menu-in-item-text">@project.Name</span>
                                     </a>

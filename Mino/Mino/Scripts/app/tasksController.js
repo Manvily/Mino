@@ -89,6 +89,7 @@
     }
 
     var init = function () {
+        $(".js-task-reference").on("click", function (e) { e.stopPropagation(); });
         $(".js-task-box").on("click", function () { openForm($(this)) });
         $(".js-edit-task").on("click", editTask);
         $(".js-delete-task").on("click", deleteTask);
@@ -99,13 +100,6 @@
         });
         $(".js-show-modal").on("click", showCreateModal);
         $(".js-task-create").on("click", createTask);
-        $(".js-search-tasks").keypress(function() {
-            console.log("Wpisywanie");
-        });
-        if ($(".js-search-tasks").val().length <= 0) {
-            // paste cutted start tasks
-            console.log("Pusto");
-        }
     }
 
     return {

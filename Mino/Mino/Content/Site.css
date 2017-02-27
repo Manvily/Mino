@@ -154,6 +154,9 @@ textarea {
   height: 55px;
   cursor: pointer;
 }
+.tasks li .task-box a {
+  color: black;
+}
 .tasks li .task-box .task-tick {
   position: absolute;
   top: 9px;
