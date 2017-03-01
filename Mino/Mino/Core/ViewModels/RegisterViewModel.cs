@@ -20,8 +20,8 @@ namespace Mino.Core.ViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [StringLength(100)]
-        public string Name { get; set; }
+        //[Required]
+        //[StringLength(100)]
+        //public string Name { get; set; }
     }
 }
