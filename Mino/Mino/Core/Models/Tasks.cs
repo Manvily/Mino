@@ -18,6 +18,8 @@ namespace Mino.Core.Models
 
         public bool IsDone { get; set; }
 
+        public bool HasNotification { get; set; }
+
         public DateTime? DateTime { get; set; }
 
         public Tag Tag { get; set; }

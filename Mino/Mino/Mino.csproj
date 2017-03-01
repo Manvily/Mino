@@ -298,6 +298,10 @@
     <Compile Include="Persistence\Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.Designer.cs">
       <DependentUpon>201702040857430_RemoveUserNameFromPreviousFailedTry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201703010432358_AddHasNotificationColumnInTask.cs" />
+    <Compile Include="Persistence\Migrations\201703010432358_AddHasNotificationColumnInTask.Designer.cs">
+      <DependentUpon>201703010432358_AddHasNotificationColumnInTask.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -434,6 +438,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201702040857430_RemoveUserNameFromPreviousFailedTry.resx">
       <DependentUpon>201702040857430_RemoveUserNameFromPreviousFailedTry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201703010432358_AddHasNotificationColumnInTask.resx">
+      <DependentUpon>201703010432358_AddHasNotificationColumnInTask.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

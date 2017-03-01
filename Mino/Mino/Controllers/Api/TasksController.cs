@@ -75,13 +75,5 @@ namespace Mino.Controllers.Api
 
             return Ok();
         }
-
-        [HttpPost]
-        public IHttpActionResult Search(TaskDto dto)
-        {
-
-
-            return Ok();
-        }
     }
 }
