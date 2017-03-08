@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace Mino.Persistence.Repositories
 {
@@ -22,6 +23,7 @@ namespace Mino.Persistence.Repositories
                     x.UserId == userId &&
                     !x.IsDone &&
                     x.ProjectId == id)
+                    .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)
                 .ToList();
@@ -33,6 +35,7 @@ namespace Mino.Persistence.Repositories
                     x.UserId == userId &&
                     !x.IsDone &&
                     x.TagId == id)
+                    .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)
                 .ToList();
@@ -49,6 +52,7 @@ namespace Mino.Persistence.Repositories
                     x.DateTime.HasValue &&
                     x.DateTime >= today &&
                     x.DateTime < tomorrow)
+                    .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)
                 .ToList();
@@ -62,6 +66,7 @@ namespace Mino.Persistence.Repositories
                     !x.IsDone &&
                     x.DateTime >= DateTime.Today.Date &&
                     x.DateTime <= endOfWeek)
+                    .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)
                 .ToList();
@@ -73,12 +78,13 @@ namespace Mino.Persistence.Repositories
                     x.UserId == userId &&
                     !x.IsDone &&
                     x.DateTime < DateTime.Today)
+                    .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)
                 .ToList();
         }
 
-        public Tasks GetUserTask(string userId, int id)
+        public Tasks GetTask(string userId, int id)
         {
             return _context.Tasks.Single(g =>
                 g.UserId == userId &&
@@ -98,9 +104,10 @@ namespace Mino.Persistence.Repositories
         public IEnumerable<Tasks> SearchTasks(string userId, string query)
         {
             return _context.Tasks.Where(g =>
-            g.Name.Contains(query) &&
-            !g.IsDone &&
-            g.UserId == userId)
+                    g.Name.Contains(query) &&
+                    !g.IsDone &&
+                    g.UserId == userId)
+                    .OrderByDescending(a => a.Priority)
                 .Include(t => t.Tag)
                 .Include(p => p.Project)
                 .ToList();
@@ -113,6 +120,7 @@ namespace Mino.Persistence.Repositories
                     !a.HasNotification &&
                     a.DateTime < DateTime.Today &&
                     a.UserId == userId)
+                    .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)
                 .ToList();

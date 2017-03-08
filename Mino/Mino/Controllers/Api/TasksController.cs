@@ -37,7 +37,7 @@ namespace Mino.Controllers.Api
         {
             var task =
                 _unitOfWork.Tasks
-                .GetUserTask(User.Identity.GetUserId(), dto.TaskId);
+                .GetTask(User.Identity.GetUserId(), dto.TaskId);
 
             task.Modify(dto.Name,
                 dto.Priority,
@@ -55,7 +55,7 @@ namespace Mino.Controllers.Api
         {
             var task =
                 _unitOfWork.Tasks
-                .GetUserTask(User.Identity.GetUserId(), dto.TaskId);
+                .GetTask(User.Identity.GetUserId(), dto.TaskId);
 
             _unitOfWork.Tasks.Remove(task);
             _unitOfWork.Complete();
@@ -68,7 +68,7 @@ namespace Mino.Controllers.Api
         {
             var task =
                 _unitOfWork.Tasks
-                .GetUserTask(User.Identity.GetUserId(), dto.TaskId);
+                .GetTask(User.Identity.GetUserId(), dto.TaskId);
 
             task.Finish();
             _unitOfWork.Complete();

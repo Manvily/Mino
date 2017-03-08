@@ -10,7 +10,7 @@ namespace Mino.Core.Repositories
         IEnumerable<Tasks> GetNextWeekTasks(string userId);
         IEnumerable<Tasks> GetUserTasksByTag(string userId, int id);
         IEnumerable<Tasks> GetOverdueTasks(string userId);
-        Tasks GetUserTask(string userId, int id);
+        Tasks GetTask(string userId, int id);
         void Add(Tasks task);
         void Remove(Tasks task);
         IEnumerable<Tasks> SearchTasks(string userId, string query);
