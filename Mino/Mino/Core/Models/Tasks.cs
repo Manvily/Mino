@@ -35,7 +35,8 @@ namespace Mino.Core.Models
             High = 3
         }
 
-        public void Modify(string name, int priority, int? projectId = null, int? tagId = null, DateTime? dateTime = null)
+        public void Modify(string name, int priority, int? projectId = null,
+            int? tagId = null, DateTime? dateTime = null)
         {
             Name = name;
             ProjectId = projectId;
@@ -47,6 +48,11 @@ namespace Mino.Core.Models
         public void Finish()
         {
             IsDone = true;
+        }
+
+        public void SetNotification()
+        {
+            HasNotification = true;
         }
     }
 }

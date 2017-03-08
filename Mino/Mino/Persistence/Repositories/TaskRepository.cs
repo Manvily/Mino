@@ -97,12 +97,24 @@ namespace Mino.Persistence.Repositories
 
         public IEnumerable<Tasks> SearchTasks(string userId, string query)
         {
-            return _context.Tasks.Where(g => 
-            g.Name.Contains(query) && 
-            !g.IsDone && 
+            return _context.Tasks.Where(g =>
+            g.Name.Contains(query) &&
+            !g.IsDone &&
             g.UserId == userId)
                 .Include(t => t.Tag)
                 .Include(p => p.Project)
+                .ToList();
+        }
+
+        public IEnumerable<Tasks> GetOverdueTasksWithoutNotification(string userId)
+        {
+            return _context.Tasks.Where(a =>
+                    !a.IsDone &&
+                    !a.HasNotification &&
+                    a.DateTime < DateTime.Today &&
+                    a.UserId == userId)
+                .Include(p => p.Project)
+                .Include(t => t.Tag)
                 .ToList();
         }
     }

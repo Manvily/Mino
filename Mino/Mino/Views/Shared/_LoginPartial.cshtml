@@ -11,6 +11,7 @@
                     <i class="glyphicon glyphicon-plus"></i>
                 </a>
             </li>
+
             <li>
                 <a id="dLabel" href="#" data-toggle="dropdown" role="button" aria-haspopup="true">
                     @User.Identity.GetUserName()
@@ -31,6 +32,12 @@
                         <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
                     </li>
                 </ul>
+            </li>
+            <li class="notifications">
+                <a href="#">
+                    <i class="glyphicon glyphicon-globe"></i>
+                    <span class="badge js-notifications-count hide">0</span>
+                </a>
             </li>
         </ul>
     }

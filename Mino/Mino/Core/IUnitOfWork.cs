@@ -7,6 +7,7 @@ namespace Mino.Core
         ITaskRepository Tasks { get; }
         ITagRepository Tags { get; }
         IProjectRepository Projects { get; }
+        INotificationRepository Notifications { get; }
         void Complete();
     }
 }

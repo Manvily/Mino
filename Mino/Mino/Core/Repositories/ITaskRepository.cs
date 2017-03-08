@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Mino.Core.Models;
+﻿using Mino.Core.Models;
+using System.Collections.Generic;
 
 namespace Mino.Core.Repositories
 {
@@ -14,5 +14,6 @@ namespace Mino.Core.Repositories
         void Add(Tasks task);
         void Remove(Tasks task);
         IEnumerable<Tasks> SearchTasks(string userId, string query);
+        IEnumerable<Tasks> GetOverdueTasksWithoutNotification(string userId);
     }
 }

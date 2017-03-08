@@ -13,12 +13,18 @@ namespace Mino
                     "~/Scripts/app/projectsService.js",
                     "~/Scripts/app/tagsService.js",
                     "~/Scripts/app/editTaskService.js",
+                    "~/Scripts/app/notificationsService.js",
                     "~/Scripts/app/tasksController.js",
                     "~/Scripts/app/projectsController.js",
-                    "~/Scripts/app/tagsController.js"));
+                    "~/Scripts/app/tagsController.js",
+                    "~/Scripts/app/notificationsController.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/lib").Include(
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/underscore-min.js",
+                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/respond.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -27,10 +33,6 @@ namespace Mino
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.min.js",
-                      "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",

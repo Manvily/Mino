@@ -235,6 +235,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\NotificationsController.cs" />
+    <Compile Include="Core\Dtos\NotificationDto.cs" />
+    <Compile Include="Core\Models\Notification.cs" />
+    <Compile Include="Core\Models\NotificationType.cs" />
+    <Compile Include="Core\Repositories\INotificationRepository.cs" />
     <Compile Include="Core\ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="Core\ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="Core\ViewModels\ExternalLoginConfirmationViewModel.cs" />
@@ -302,6 +307,26 @@
     <Compile Include="Persistence\Migrations\201703010432358_AddHasNotificationColumnInTask.Designer.cs">
       <DependentUpon>201703010432358_AddHasNotificationColumnInTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\201703030444567_AddNotificationModel.cs" />
+    <Compile Include="Persistence\Migrations\201703030444567_AddNotificationModel.Designer.cs">
+      <DependentUpon>201703030444567_AddNotificationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201703030501246_AddUserNotificationModel.cs" />
+    <Compile Include="Persistence\Migrations\201703030501246_AddUserNotificationModel.Designer.cs">
+      <DependentUpon>201703030501246_AddUserNotificationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201703071543017_DropUserNotificationModel.cs" />
+    <Compile Include="Persistence\Migrations\201703071543017_DropUserNotificationModel.Designer.cs">
+      <DependentUpon>201703071543017_DropUserNotificationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201703071544084_ExtendNotificationModel.cs" />
+    <Compile Include="Persistence\Migrations\201703071544084_ExtendNotificationModel.Designer.cs">
+      <DependentUpon>201703071544084_ExtendNotificationModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\201703071547273_ExtendNotificationModel2.cs" />
+    <Compile Include="Persistence\Migrations\201703071547273_ExtendNotificationModel2.Designer.cs">
+      <DependentUpon>201703071547273_ExtendNotificationModel2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Core\ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -311,6 +336,7 @@
     <Compile Include="Core\Models\Tag.cs" />
     <Compile Include="Core\Models\Tasks.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Persistence\Repositories\NotificationRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\Repositories\IProjectRepository.cs" />
@@ -350,6 +376,8 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\notificationsController.js" />
+    <Content Include="Scripts\app\notificationsService.js" />
     <Content Include="Scripts\app\tasksController.js" />
     <Content Include="Scripts\app\tasksService.js" />
     <Content Include="Scripts\app\projectsController.js" />
@@ -369,6 +397,7 @@
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\underscore-min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -441,6 +470,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\201703010432358_AddHasNotificationColumnInTask.resx">
       <DependentUpon>201703010432358_AddHasNotificationColumnInTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201703030444567_AddNotificationModel.resx">
+      <DependentUpon>201703030444567_AddNotificationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201703030501246_AddUserNotificationModel.resx">
+      <DependentUpon>201703030501246_AddUserNotificationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201703071543017_DropUserNotificationModel.resx">
+      <DependentUpon>201703071543017_DropUserNotificationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201703071544084_ExtendNotificationModel.resx">
+      <DependentUpon>201703071544084_ExtendNotificationModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\201703071547273_ExtendNotificationModel2.resx">
+      <DependentUpon>201703071547273_ExtendNotificationModel2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

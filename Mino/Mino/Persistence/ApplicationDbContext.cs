@@ -10,6 +10,7 @@ namespace Mino.Persistence
         public DbSet<Tasks> Tasks { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

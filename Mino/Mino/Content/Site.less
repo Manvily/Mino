@@ -24,8 +24,8 @@
     margin: 0;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
     white-space: normal;
@@ -196,7 +196,7 @@ textarea {
             height: 55px;
             cursor: pointer;
 
-            a{
+            a {
                 color: black;
             }
 
@@ -369,7 +369,41 @@ textarea {
         font-size: 20px;
     }
 
-    .search-form{
+    .search-form {
         padding: 10px;
     }
+}
+
+/* Notifications */
+
+.popover-notifications {
+
+    .popover-content {
+        padding: 0;
+    }
+
+    ul.notifications {
+        list-style: none;
+        padding-left: 0;
+
+        > li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        > li:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.navbar-inverse .notifications {
+    position: relative;
+}
+
+.navbar-inverse .notifications .badge {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    background: #a80a0a;
 }

@@ -20,8 +20,8 @@
   padding: 0;
   margin: 0;
 }
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
 */
 .dl-horizontal dt {
   white-space: normal;
@@ -290,4 +290,28 @@ textarea {
 }
 #sidebar-wrapper .search-form {
   padding: 10px;
+}
+/* Notifications */
+.popover-notifications .popover-content {
+  padding: 0;
+}
+.popover-notifications ul.notifications {
+  list-style: none;
+  padding-left: 0;
+}
+.popover-notifications ul.notifications > li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.popover-notifications ul.notifications > li:last-child {
+  border-bottom: none;
+}
+.navbar-inverse .notifications {
+  position: relative;
+}
+.navbar-inverse .notifications .badge {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  background: #a80a0a;
 }

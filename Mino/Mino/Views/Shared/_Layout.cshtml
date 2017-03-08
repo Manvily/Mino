@@ -40,17 +40,16 @@
 
     @Html.Action("SidebarPartial", "Home")
 
-<div class="body-content">
-    @Html.Action("Overdue", "Tasks")
-    @RenderBody()
-    <hr/>
-    <footer>
-        <p>&copy; Mariusz Kwiatek 2017</p>
-    </footer>
-</div>
+    <div class="body-content">
+        @Html.Action("Overdue", "Tasks")
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; Mariusz Kwiatek 2017</p>
+        </footer>
+    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/lib")
     @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
     <script>
@@ -58,7 +57,17 @@
             ProjectsController.init();
             TagsController.init();
             TasksController.init();
+            NotificationsController.init();
         });
+    </script>
+    <script type="text/x-template" id="notifications-template">
+        <ul class="notifications">
+            <% _.each(notifications, function(notification){
+            if(notification.type == 1){ %>
+            <li>You have <b><%= notification.task.name %></b> to do!</li>
+            <% }
+            }) %>
+        </ul>
     </script>
 </body>
 </html>
