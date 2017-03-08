@@ -8,16 +8,14 @@ namespace Mino
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
-                    "~/Scripts/app/app.js",
-                    "~/Scripts/app/tasksService.js",
-                    "~/Scripts/app/projectsService.js",
-                    "~/Scripts/app/tagsService.js",
-                    "~/Scripts/app/editTaskService.js",
-                    "~/Scripts/app/notificationsService.js",
-                    "~/Scripts/app/tasksController.js",
-                    "~/Scripts/app/projectsController.js",
-                    "~/Scripts/app/tagsController.js",
-                    "~/Scripts/app/notificationsController.js"));
+                    "~/Scripts/app/services/tasksService.js",
+                    "~/Scripts/app/services/projectsService.js",
+                    "~/Scripts/app/services/tagsService.js",
+                    "~/Scripts/app/services/notificationsService.js",
+                    "~/Scripts/app/controllers/tasksController.js",
+                    "~/Scripts/app/controllers/projectsController.js",
+                    "~/Scripts/app/controllers/tagsController.js",
+                    "~/Scripts/app/controllers/notificationsController.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                         "~/Scripts/jquery-{version}.js",
