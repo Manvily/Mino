@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Mino.Core.Models;
+using System;
 
 namespace Mino.Core.Dtos
 {
     public class TaskDto
     {
         public int TaskId { get; set; }
-        public int Priority { get; set; }
+        public TaskPriority Priority { get; set; }
         public int? ProjectId { get; set; }
         public int? TagId { get; set; }
         public string Name { get; set; }

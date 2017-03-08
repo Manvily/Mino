@@ -48,7 +48,7 @@
                             <span class="glyphicon glyphicon-pushpin"></span>
                             <span>
                                 @{
-                                    var priority = (Tasks.Priorities) task.Priority;
+                                    var priority = (TaskPriority) task.Priority;
                                     var priorityName = priority.ToString();
                                 }
                                 @priorityName

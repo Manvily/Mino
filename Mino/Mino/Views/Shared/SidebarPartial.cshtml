@@ -36,7 +36,7 @@
                 <li>
                     @Html.LabelFor(x => x.Task.Priority)
                     @Html.DropDownList("Priorities",
-                       EnumHelper.GetSelectList(typeof(Tasks.Priorities)),
+                       EnumHelper.GetSelectList(typeof(TaskPriority)),
                        "",
                        new { @class = "form-control js-edit-dropdown-priority" })
                 </li>

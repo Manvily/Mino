@@ -2,11 +2,11 @@
 
 namespace Mino.Core.Models
 {
-    public class Tasks
+    public partial class Tasks
     {
         public int Id { get; set; }
 
-        public int Priority { get; set; }
+        public TaskPriority Priority { get; set; }
 
         public int? TagId { get; set; }
 
@@ -26,16 +26,7 @@ namespace Mino.Core.Models
 
         public Project Project { get; set; }
 
-
-        public enum Priorities
-        {
-            None = 0,
-            Low = 1,
-            Mid = 2,
-            High = 3
-        }
-
-        public void Modify(string name, int priority, int? projectId = null,
+        public void Modify(string name, TaskPriority priority, int? projectId = null,
             int? tagId = null, DateTime? dateTime = null)
         {
             Name = name;
