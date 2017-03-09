@@ -18,7 +18,7 @@
                     <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
                          @if (task.DateTime != null)
                          {
-                             @: data-date="@task.DateTime.Value.ToString("d MMM yyyy")"
+                             @: data-date="@task.DateTime.Value.ToString("yyyy-MM-dd")"
                              @: data-time="@task.DateTime.Value.ToString("HH:mm")"
                          }>
                         <div class="task-tick">
@@ -48,7 +48,7 @@
                                 <span class="glyphicon glyphicon-pushpin"></span>
                                 <span>
                                     @{
-                                        var priority = (Tasks.TaskPriority) task.Priority;
+                                        var priority = (TaskPriority) task.Priority;
                                         var priorityName = priority.ToString();
                                     }
                                     @priorityName

@@ -27,11 +27,11 @@
                 </li>
                 <li>
                     @Html.LabelFor(x => x.Date)
-                    @Html.TextBoxFor(x => x.Date, new { @class = "form-control js-edit-date", placeholder = "eg 1 Jan 2015" })
+                    <input type="date" class = "form-control js-edit-date" />
                 </li>
                 <li>
                     @Html.LabelFor(x => x.Time)
-                    @Html.TextBoxFor(x => x.Time, new { @class = "form-control js-edit-time", placeholder = "eg 20:00" })
+                    <input type="time" class="form-control js-edit-time" />
                 </li>
                 <li>
                     @Html.LabelFor(x => x.Task.Priority)
