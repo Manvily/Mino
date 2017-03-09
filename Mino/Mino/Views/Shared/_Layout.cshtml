@@ -40,14 +40,17 @@
 
     @Html.Action("SidebarPartial", "Home")
 
-    <div class="body-content">
+<div class="body-content">
+    @if (String.IsNullOrEmpty(ViewBag.IsSearch))
+    {
         @Html.Action("Overdue", "Tasks")
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; Mariusz Kwiatek 2017</p>
-        </footer>
-    </div>
+    }
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; Mariusz Kwiatek 2017</p>
+    </footer>
+</div>
 
     @Scripts.Render("~/bundles/lib")
     @Scripts.Render("~/bundles/app")

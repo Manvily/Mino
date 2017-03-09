@@ -22,7 +22,8 @@ namespace Mino.Persistence.Repositories
             return _context.Tasks.Where(x =>
                     x.UserId == userId &&
                     !x.IsDone &&
-                    x.ProjectId == id)
+                    x.ProjectId == id &&
+                    x.DateTime >= DateTime.Now)
                     .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)
@@ -34,7 +35,8 @@ namespace Mino.Persistence.Repositories
             return _context.Tasks.Where(x =>
                     x.UserId == userId &&
                     !x.IsDone &&
-                    x.TagId == id)
+                    x.TagId == id &&
+                    x.DateTime >= DateTime.Now)
                     .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)

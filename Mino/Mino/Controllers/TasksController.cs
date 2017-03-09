@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Mino.Core;
 using Mino.Core.Models;
 using Mino.Core.ViewModels;
-using System.Web.Mvc;
 using Mino.Persistence.ControllerHelper;
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace Mino.Controllers
 {
@@ -29,6 +29,7 @@ namespace Mino.Controllers
             }
             else
             {
+                ViewBag.IsSearch = "true";
                 tasks = _unitOfWork.Tasks.SearchTasks(User.Identity.GetUserId(), query);
             }
 
@@ -82,6 +83,7 @@ namespace Mino.Controllers
             return RedirectToAction("Index", "Tasks", new { query = viewModel.SearchTerm });
         }
 
+        [ChildActionOnly]
         public ActionResult Overdue()
         {
             var viewModel =
