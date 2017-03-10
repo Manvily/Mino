@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Mino.Core.Models;
+﻿using Mino.Core.Models;
 using Mino.Core.Repositories;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Mino.Persistence.Repositories
 {

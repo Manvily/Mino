@@ -5,67 +5,67 @@
 }
 
 <div class="tasks-container">
-        @if (Model.TitleName != null)
-         {
-             <h2 class="overdue">@Model.TitleName</h2>
-         }
-        <ul class="tasks">
-            @foreach (var task in Model.Tasks)
-            {
-                <li>
-                    @{ string projectColor = (task.ProjectId != null) ? task.Project.Color : ""; }
+    @if (Model.TitleName != null)
+    {
+        <h2 class="overdue">@Model.TitleName</h2>
+    }
+    <ul class="tasks">
+        @foreach (var task in Model.Tasks)
+        {
+            <li>
+                @{ string projectColor = (task.ProjectId != null) ? task.Project.Color : ""; }
 
-                    <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
-                         @if (task.DateTime != null)
-                         {
-                             @: data-date="@task.DateTime.Value.ToString("yyyy-MM-dd")"
-                             @: data-time="@task.DateTime.Value.ToString("HH:mm")"
-                         }>
-                        <div class="task-tick">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-unchecked js-toggle-task"></i>
-                            </a>
-                        </div>
-                        <div class="task-name js-task-name">
-                            @task.Name
-                        </div>
+                <div class="task-box js-task-box" data-task-id="@task.Id" data-project-id="@task.ProjectId" data-tag-id="@task.TagId" data-priority="@task.Priority"
+                        @if (task.DateTime != null)
+                        {
+                            @: data-date="@task.DateTime.Value.ToString("yyyy-MM-dd")"
+                            @: data-time="@task.DateTime.Value.ToString("HH:mm")"
+                        }>
+                    <div class="task-tick">
+                        <a href="#">
+                            <i class="glyphicon glyphicon-unchecked js-toggle-task"></i>
+                        </a>
+                    </div>
+                    <div class="task-name js-task-name">
+                        @task.Name
+                    </div>
 
-                        <div class="task-attributes">
-                            <div class="attr-section ">
-                                <span class="glyphicon glyphicon-record @projectColor " aria-hidden="true"></span>
-                                <span>
-                                    @if (task.ProjectId != null)
-                                    {
-                                        @:<a href="@Url.Action("Project", "Tasks", new {projectId = task.ProjectId})" class="js-task-reference">@task.Project.Name</a>
-                                    }
-                                    else
-                                    {
-                                        @:Inbox
-                                    }
-                                </span>
-                            </div>
-                            <div class="attr-section">
-                                <span class="glyphicon glyphicon-pushpin"></span>
-                                <span>
-                                    @{
-                                        var priority = (TaskPriority) task.Priority;
-                                        var priorityName = priority.ToString();
-                                    }
-                                    @priorityName
-                                </span>
-                            </div>
-                            <div class="attr-section">
-                                @if (task.TagId != null)
+                    <div class="task-attributes">
+                        <div class="attr-section ">
+                            <span class="glyphicon glyphicon-record @projectColor " aria-hidden="true"></span>
+                            <span>
+                                @if (task.ProjectId != null)
                                 {
-                                    <span class="glyphicon glyphicon-flag"></span>
-                                    <span><a href="@Url.Action("Tag", "Tasks", new {tagId = task.TagId})" class="js-task-reference">@task.Tag.Name</a></span>
+                                    @:<a href="@Url.Action("Project", "Tasks", new {projectId = task.ProjectId})" class="js-task-reference">@task.Project.Name</a>
                                 }
-                            </div>
+                                else
+                                {
+                                    @:Inbox
+                                }
+                            </span>
+                        </div>
+                        <div class="attr-section">
+                            <span class="glyphicon glyphicon-pushpin"></span>
+                            <span>
+                                @{
+                                    var priority = (TaskPriority) task.Priority;
+                                    var priorityName = priority.ToString();
+                                }
+                                @priorityName
+                            </span>
+                        </div>
+                        <div class="attr-section">
+                            @if (task.TagId != null)
+                            {
+                                <span class="glyphicon glyphicon-flag"></span>
+                                <span><a href="@Url.Action("Tag", "Tasks", new {tagId = task.TagId})" class="js-task-reference">@task.Tag.Name</a></span>
+                            }
                         </div>
                     </div>
-                </li>
-            }
-        </ul>
+                </div>
+            </li>
+        }
+    </ul>
 </div>
 
 
