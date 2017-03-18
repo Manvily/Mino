@@ -354,9 +354,20 @@
     <Compile Include="Core\ViewModels\WeeklyTasksViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-Mino-20170123062349.mdf" />
+    <Content Include="App_Data\aspnet-Mino-20170123062349_log.ldf">
+      <DependentUpon>aspnet-Mino-20170123062349.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\FrontSite.css">
+      <DependentUpon>FrontSite.less</DependentUpon>
+    </Content>
+    <Content Include="Content\FrontSite.min.css">
+      <DependentUpon>FrontSite.css</DependentUpon>
+    </Content>
+    <Content Include="Content\Images\laptop_park.jpg" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.less</DependentUpon>
     </Content>
@@ -370,6 +381,7 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
+    <Content Include="Content\FrontSite.less" />
     <None Include="Content\Site.less" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -433,15 +445,13 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Tasks\Index.cshtml" />
     <Content Include="Views\Shared\AddTaskPartial.cshtml" />
-    <Content Include="Views\Shared\_UnloginLayout.cshtml" />
     <Content Include="Views\Shared\SidebarPartial.cshtml" />
     <Content Include="Views\Tasks\NextWeek.cshtml" />
     <Content Include="Views\Projects\Show.cshtml" />
     <Content Include="Views\Tags\Show.cshtml" />
+    <Content Include="Views\Account\_FrontPageLayout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
