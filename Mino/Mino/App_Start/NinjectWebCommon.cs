@@ -1,3 +1,6 @@
+using Ninject.Web.WebApi;
+using System.Web.Http;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Mino.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Mino.App_Start.NinjectWebCommon), "Stop")]
 
@@ -53,6 +56,7 @@ namespace Mino.App_Start
                         .BindDefaultInterface();
                 });
 
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch

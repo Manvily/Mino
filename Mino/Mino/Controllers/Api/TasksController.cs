@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
+using Mino.Core;
 using Mino.Core.Dtos;
 using Mino.Core.Models;
-using Mino.Persistence;
 using System.Web.Http;
 
 namespace Mino.Controllers.Api
@@ -9,12 +9,11 @@ namespace Mino.Controllers.Api
     [Authorize]
     public class TasksController : ApiController
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public TasksController()
+        public TasksController(IUnitOfWork unitOfWork)
         {
-            var context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(context);
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]

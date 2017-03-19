@@ -1,20 +1,19 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Persistence;
-using System.Web.Http;
+using Mino.Core;
 using Mino.Core.Dtos;
 using Mino.Core.Models;
+using System.Web.Http;
 
 namespace Mino.Controllers.Api
 {
     [Authorize]
     public class TagsController : ApiController
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public TagsController()
+        public TagsController(IUnitOfWork unitOfWork)
         {
-            var context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(context);
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost]
@@ -32,7 +31,6 @@ namespace Mino.Controllers.Api
             return Ok();
         }
 
-        //todo be carefoul HTTPDELETE
         public IHttpActionResult Delete(TagDto dto)
         {
             var tag =

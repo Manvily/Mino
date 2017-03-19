@@ -22,7 +22,8 @@ namespace Mino.Persistence.Repositories
                     x.UserId == userId &&
                     !x.IsDone &&
                     x.ProjectId == id &&
-                    x.DateTime >= DateTime.Now)
+                    (x.DateTime == null ||
+                    x.DateTime >= DateTime.Now))
                     .OrderByDescending(a => a.Priority)
                 .Include(p => p.Project)
                 .Include(t => t.Tag)

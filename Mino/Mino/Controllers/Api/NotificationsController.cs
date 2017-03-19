@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
+using Mino.Core;
 using Mino.Core.Dtos;
 using Mino.Core.Models;
-using Mino.Persistence;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -11,12 +11,11 @@ namespace Mino.Controllers.Api
     [Authorize]
     public class NotificationsController : ApiController
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public NotificationsController()
+        public NotificationsController(IUnitOfWork unitOfWork)
         {
-            var context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(context);
+            _unitOfWork = unitOfWork;
         }
         public IEnumerable<NotificationDto> GetNewNotifications()
         {
