@@ -1,0 +1,39 @@
+﻿body {
+  padding: 0px;
+}
+.navbar {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  border-radius: 0;
+}
+.navbar a {
+  color: white;
+  float: right;
+  padding: 11px;
+  font-size: large;
+  margin-right: 50px;
+}
+.photo {
+  position: relative;
+  top: 50px;
+}
+.photo img {
+  background-size: cover;
+}
+.photo .text {
+  position: absolute;
+  bottom: 10px;
+  font-size: 200%;
+  color: #fff;
+  padding: 0 20px;
+  width: 40%;
+  line-height: 150%;
+}
+.photo .text .btn-default {
+  background-color: #ed6e13 !important;
+  border-color: #ae4900;
+}
