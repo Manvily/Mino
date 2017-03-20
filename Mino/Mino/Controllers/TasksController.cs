@@ -88,7 +88,13 @@ namespace Mino.Controllers
         {
             var viewModel =
                 new TasksViewModel(_unitOfWork.Tasks
-                .GetOverdueTasks(User.Identity.GetUserId()), "Overdue");
+                .GetOverdueTasks(User.Identity.GetUserId()));
+
+            foreach (var task in viewModel.Tasks)
+            {
+                viewModel.TitleName = "Overdue";
+                break;
+            }
 
             return PartialView("Index", viewModel);
         }

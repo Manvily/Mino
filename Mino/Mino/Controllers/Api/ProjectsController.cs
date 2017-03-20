@@ -38,6 +38,11 @@ namespace Mino.Controllers.Api
         {
             var userId = User.Identity.GetUserId();
             var project = _unitOfWork.Projects.GetUserProject(userId, dto.Id);
+            var projectTasks = _unitOfWork.Tasks.GetUserTasksByProject(userId, project.Id);
+
+            foreach (var task in projectTasks)
+                task.ProjectId = null;
+
 
             _unitOfWork.Projects.Remove(project);
             _unitOfWork.Complete();

@@ -1,19 +1,17 @@
 ﻿using Microsoft.AspNet.Identity;
-using Mino.Persistence;
-using System.Web.Mvc;
-using Mino.Core.Models;
+using Mino.Core;
 using Mino.Core.ViewModels;
+using System.Web.Mvc;
 
 namespace Mino.Controllers
 {
     public class TagsController : Controller
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public TagsController()
+        public TagsController(IUnitOfWork unitOfWork)
         {
-            var context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(context);
+            _unitOfWork = unitOfWork;
         }
 
         public ActionResult Show()

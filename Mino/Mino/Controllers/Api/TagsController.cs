@@ -31,11 +31,19 @@ namespace Mino.Controllers.Api
             return Ok();
         }
 
+        [HttpDelete]
         public IHttpActionResult Delete(TagDto dto)
         {
+            var userId = User.Identity.GetUserId();
+
             var tag =
                 _unitOfWork.Tags
-                .GetUserTag(User.Identity.GetUserId(), dto.Id);
+                .GetUserTag(userId, dto.Id);
+
+            var tagTasks = _unitOfWork.Tasks.GetUserTasksByTag(userId, tag.Id);
+
+            foreach (var task in tagTasks)
+                task.TagId = null;
 
             _unitOfWork.Tags.Remove(tag);
             _unitOfWork.Complete();

@@ -2,7 +2,7 @@
 
 namespace Mino.Core.Models
 {
-    public partial class Tasks
+    public class Tasks
     {
         public int Id { get; set; }
 

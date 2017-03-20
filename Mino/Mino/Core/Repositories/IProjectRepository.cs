@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Mino.Core.Models;
+﻿using Mino.Core.Models;
+using System.Collections.Generic;
 
 namespace Mino.Core.Repositories
 {

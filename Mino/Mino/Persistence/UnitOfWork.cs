@@ -26,6 +26,5 @@ namespace Mino.Persistence
         {
             _context.SaveChanges();
         }
-
     }
 }

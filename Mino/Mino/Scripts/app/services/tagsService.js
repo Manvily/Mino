@@ -9,7 +9,7 @@
     var delet = function (id, done, fail) {
         $.ajax({
             method: "DELETE",
-            url: "/api/tags/",
+            url: "/api/tags/delete",
             data: "id=" + id
         })
             .done(done)

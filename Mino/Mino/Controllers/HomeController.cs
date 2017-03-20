@@ -1,19 +1,18 @@
 ﻿using Microsoft.AspNet.Identity;
+using Mino.Core;
 using Mino.Core.ViewModels;
-using Mino.Persistence;
-using System.Web.Mvc;
 using Mino.Persistence.ControllerHelper;
+using System.Web.Mvc;
 
 namespace Mino.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController()
+        public HomeController(IUnitOfWork unitOfWork)
         {
-            var context = new ApplicationDbContext();
-            _unitOfWork = new UnitOfWork(context);
+            _unitOfWork = unitOfWork;
         }
 
         public ActionResult Index()

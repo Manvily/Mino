@@ -7,9 +7,10 @@
     }
 
     var delet = function (id, done, fail) {
+        //$.post("/api/projects/delete", { id: id})
         $.ajax({
             method: "DELETE",
-            url: "/api/projects/",
+            url: "/api/projects/delete",
             data: "id=" + id
         })
             .done(done)
