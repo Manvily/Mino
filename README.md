@@ -1,2 +1,2 @@
 # Mino
-Aplikacja ASP.NET MVC
+To Do list application. ASP.NET MVC
